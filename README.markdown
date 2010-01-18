@@ -17,10 +17,7 @@ I also am not aware of any iPhone Twitter apps on the market today that authenti
 1. Register your app with Twitter at http://twitter.com/oauth_clients
 1. Get the PlainOAuth code.
 1. Edit OAuthConsumerCredentials.h with your consumer key and secret that Twitter gives you, and remove the error.
-1. In Xcode, Open "Target", "PlainOAuth", "Info", "General" and in Linked Libraries, add the following:
- - CFNetwork.framework
- - libz.1.2.3.dylib
- - SystemConfiguration.framework
+1. In Xcode, Open "Target", "PlainOAuth", "Info", "General" and in Linked Libraries, add the following: CFNetwork.framework,, libz.1.2.3.dylib, SystemConfiguration.framework.
 1. Run the iPhone example app.
 
 I have tested the example app in Xcode 3.1.4 and iPhone OS 3.1. It runs fine both on simulator and device. It may not work on earlier iPhone OS-es.
@@ -53,6 +50,19 @@ See OAuth.h, OAuth.m and the example app for a complete example.
 ### No threading
 
 If you use the Twitter convenience methods, all HTTP calls are synchronous. This lets you do threading in a way that you like most yourself. The example app shows one possible approach.
+
+## TODO
+
+* Decouple Twitter and generic stuff
+* Better documentation?
+
+## Read more on my blog
+
+Here are two posts on the background of this, that may help you understand this code better.
+
+[Understanding the guts of Twitter's OAuth for client apps](http://www.jaanuskase.com/en/2010/01/an_example_iphone_twitter_app.html)
+
+[An example iPhone Twitter app with OAuth authentication](http://www.jaanuskase.com/en/2010/01/an_example_iphone_twitter_app.html)
 
 ## Acknowledgements
 

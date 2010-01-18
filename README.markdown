@@ -17,8 +17,7 @@ I also am not aware of any iPhone Twitter apps on the market today that authenti
 1. Register your app with Twitter at http://twitter.com/oauth_clients
 1. Get the PlainOAuth code.
 1. Edit OAuthConsumerCredentials.h with your consumer key and secret that Twitter gives you, and remove the error.
-1. In Xcode, Open "Target", "PlainOAuth", "Info", "General" and in Linked Libraries, add the following: CFNetwork.framework,, libz.1.2.3.dylib, SystemConfiguration.framework.
-1. Run the iPhone example app.
+1. Compile and run.
 
 I have tested the example app in Xcode 3.1.4 and iPhone OS 3.1. It runs fine both on simulator and device. It may not work on earlier iPhone OS-es.
 

@@ -1,0 +1,18 @@
+# http://stackoverflow.com/questions/456403/can-git-be-integrated-with-xcode
+
+# xcode noise
+build/*
+*.pbxuser
+*.mode1v3
+
+# old skool
+.svn
+
+# osx noise
+.DS_Store
+profile
+
+*.pyc 
+*~.nib/ 
+*.perspective 
+*.perspectivev3

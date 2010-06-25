@@ -2,8 +2,8 @@
 //  main.m
 //  PlainOAuth
 //
-//  Created by Jaanus Kase on 17.01.10.
-//  Copyright World Evolved 2010. All rights reserved.
+//  Created by Jaanus Kase on 03.05.10.
+//  Copyright 2010. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -1,17 +1,16 @@
 //
-//  OAuthViewController.h
+//  OAuth+UserDefaults.h
+//  SPTweetTable
 //
-//  Created by Jaanus Kase on 16.01.10.
+//  Created by Jaanus Kase on 23.01.10.
 //  Copyright 2010. All rights reserved.
 //
-//  A simple OAuth-enabled view controller that maintains the local OAuth context.
 
-#import <UIKit/UIKit.h>
-#import "OAuth.h"
+#import <Foundation/Foundation.h>
 
-@interface OAuthViewController : UIViewController {
-	OAuth *oAuth;
-}
+@class OAuth;
+
+@interface OAuth (OAuth_UserDefaults)
 
 - (void) loadOAuthTwitterContextFromUserDefaults;
 - (void) loadOAuthContextFromUserDefaults;

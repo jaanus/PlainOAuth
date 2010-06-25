@@ -7,10 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ASIFormDataRequest.h"
-
-// Forward declaration so that the OAuth interface would know about this protocol.
-// See bottom of file for actual protocol declaration.
-@protocol OAuthTwitterCallbacks;
+#import "OAuthTwitterCallbacks.h"
 
 @interface OAuth : NSObject {
 	NSString
@@ -79,9 +76,3 @@
 
 @end
 
-@protocol OAuthTwitterCallbacks <NSObject>
-- (void) requestTwitterTokenDidSucceed:(OAuth *)oAuth;
-- (void) requestTwitterTokenDidFail:(OAuth *)oAuth;
-- (void) authorizeTwitterTokenDidSucceed:(OAuth *)oAuth;
-- (void) authorizeTwitterTokenDidFail:(OAuth *)oAuth;
-@end

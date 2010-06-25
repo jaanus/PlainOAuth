@@ -329,26 +329,10 @@
 }
 
 - (void)keyboardWillShow:(NSNotification *)aNotification {
-	// the keyboard is showing so resize the my height
-	//CGRect keyboardRect = [[[aNotification userInfo] objectForKey:UIKeyboardBoundsUserInfoKey] CGRectValue];
-	//
-    // fixme
-    //CGRect keyboardRect2 = [[[UIApplication sharedApplication] keyWindow]
-    //                         convertRect:[[[aNotification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue]
-    //                         fromView:nil];
-    
-    // NSLog(@"bounds old: %f %f %f %f", keyboardRect.origin.x, keyboardRect.origin.y, keyboardRect.size.width, keyboardRect.size.height);
-    // NSLog(@"bounds new: %f %f %f %f", keyboardRect2.origin.x, keyboardRect2.origin.y, keyboardRect2.size.width, keyboardRect2.size.height);
-    
-
-    
-    // NSLog(@"keyboard height: %f", _keyboardHeight);
-    ///
     
     NSTimeInterval animationDuration = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
 		
     CGRect scrollFrame = scrollView.frame;
-    // scrollFrame.size.height = self.view.frame.size.height - keyboardRect.size.height;
     scrollFrame.size.height = self.view.frame.size.height - [self keyboardHeightFromNotification:aNotification];
     	
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
@@ -363,8 +347,6 @@
     CGRect scrollFrame = scrollView.frame;
     scrollFrame.size.height = self.view.frame.size.height;
     
-    // the keyboard is hiding reset the table's height
-	// CGRect keyboardRect = [[[aNotification userInfo] objectForKey:UIKeyboardBoundsUserInfoKey] CGRectValue];
     NSTimeInterval animationDuration = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];

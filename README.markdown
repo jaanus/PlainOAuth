@@ -78,7 +78,9 @@ Subclassing note: you may want to subclass TwitterLoginPopup similarly as is don
 
 ## Read more on my blog
 
-Here are two posts on the background of this, that may help you understand this code better.
+Here are three posts on the background of this, that may help you understand this code better.
+
+[New version of PlainOAuth, the example Twitter OAuth app for iPhone](http://www.jaanuskase.com/en/2010/06/new_version_of_plainoauth_the.html)
 
 [Understanding the guts of Twitter's OAuth for client apps](http://www.jaanuskase.com/en/2010/01/an_example_iphone_twitter_app.html)
 

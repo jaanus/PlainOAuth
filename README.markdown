@@ -72,9 +72,11 @@ A major rewrite. The OAuth core has not changed, but the example app has gotten 
 
 Subclassing note: you may want to subclass TwitterLoginPopup similarly as is done in this app. Some of the things you could then do are to set the navigation title bar tint, override shouldAutorotateToInterfaceOrientation: if you only support some particular rotations in your app, and incorporate some UI element for progress feedback as is done here with a very basic activity indicator.
 
-## TODO
+### July 3, 2010
 
-* OAuth Echo example: how to post a picture to TwitPic and other sites that already support OAuth Echo
+* UI detail: Twitter status field now resigns first responder after each post or when you press some other button in the UI, so you could see the controls below.
+
+* Demo of image uploading to TwitPic with OAuth Echo authentication.
 
 ## Read more on my blog
 

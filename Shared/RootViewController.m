@@ -45,6 +45,7 @@
 - (void)resetUi {
     if (oAuth.oauth_token_authorized) {
         tweets.hidden = NO;
+        uploadMediaButton.hidden = NO;
         tweets.text = @"";
         latestTweetsButton.hidden = NO;
         signedInAs.text = [NSString stringWithFormat:@"Logged in as %@.", oAuth.screen_name];
@@ -63,6 +64,7 @@
         tweets.text = @"";
         tweets.hidden = YES;
         latestTweetsButton.hidden = YES;
+        uploadMediaButton.hidden = YES;
         tweets.text = @"";
         signedInAs.text = @"";
         NSLog(@"Resetting UI to non-authorized state.");
@@ -79,6 +81,8 @@
         [login release];
         
     }
+    
+    [statusText resignFirstResponder];
 }
 
 // Override to allow orientations other than the default portrait orientation.
@@ -114,12 +118,14 @@
 #pragma mark Button actions
 
 - (void)login {
-    loginPopup = [[CustomLoginPopup alloc] initWithNibName:@"TwitterLoginPopup" bundle:nil];
-    loginPopup.oAuth = oAuth;
-    loginPopup.delegate = self;
-    loginPopup.uiDelegate = self;
+    if (!loginPopup) {
+        loginPopup = [[CustomLoginPopup alloc] initWithNibName:@"TwitterLoginPopup" bundle:nil];        
+        loginPopup.oAuth = oAuth;
+        loginPopup.delegate = self;
+        loginPopup.uiDelegate = self;
+    }
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginPopup];
-    [self presentModalViewController:nav animated:YES];
+    [self presentModalViewController:nav animated:YES];        
     [nav release];
 }
 
@@ -153,6 +159,8 @@
     statusText.text = @"";
     
     [request release];
+    
+    [statusText resignFirstResponder];
 }
 
 - (IBAction)didPressLatestTweets:(id)sender {
@@ -185,6 +193,16 @@
     } 
     
     [request release];
+    
+    [statusText resignFirstResponder];
+}
+
+- (IBAction)didPressUploadMedia:(id)sender {
+    NSLog(@"paskat");
+    UploadMedia *uploadMedia = [[UploadMedia alloc] initWithNibName:@"UploadMedia" bundle:nil];
+    uploadMedia.oAuth = oAuth;
+    [self.navigationController pushViewController:uploadMedia animated:YES];
+    [uploadMedia release];
 }
 
 
@@ -192,12 +210,12 @@
 #pragma mark TwitterLoginPopupDelegate
 
 - (void)twitterLoginPopupDidCancel:(TwitterLoginPopup *)popup {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];        
     [loginPopup release]; // was retained as ivar in "login"
 }
 
 - (void)twitterLoginPopupDidAuthorize:(TwitterLoginPopup *)popup {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];        
     [loginPopup release]; // was retained as ivar in "login"
     [oAuth saveOAuthTwitterContextToUserDefaults];
     [self resetUi];

@@ -39,9 +39,6 @@
 		EA0EB09F11D472A8006E5BEE /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06A11D472A8006E5BEE /* NSString+URLEncoding.m */; };
 		EA0EB0A011D472A8006E5BEE /* OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06C11D472A8006E5BEE /* OAuth.m */; };
 		EA0EB0A111D472A8006E5BEE /* OAuth+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06E11D472A8006E5BEE /* OAuth+UserDefaults.m */; };
-		EA0EB0A211D472A8006E5BEE /* CustomLoginPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB07111D472A8006E5BEE /* CustomLoginPopup.m */; };
-		EA0EB0A311D472A8006E5BEE /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB07311D472A8006E5BEE /* RootViewController.m */; };
-		EA0EB0A411D472A8006E5BEE /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA0EB07411D472A8006E5BEE /* RootViewController.xib */; };
 		EA0EB0A611D472A8006E5BEE /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB07A11D472A8006E5BEE /* NSObject+SBJSON.m */; };
 		EA0EB0A711D472A8006E5BEE /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB07C11D472A8006E5BEE /* NSString+SBJSON.m */; };
 		EA0EB0A811D472A8006E5BEE /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB07E11D472A8006E5BEE /* SBJsonBase.m */; };
@@ -51,6 +48,11 @@
 		EA39520C1103DB2300D867AC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520B1103DB2300D867AC /* CFNetwork.framework */; };
 		EA39520E1103DB2B00D867AC /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520D1103DB2B00D867AC /* libz.1.2.3.dylib */; };
 		EA3952101103DB3200D867AC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520F1103DB3200D867AC /* SystemConfiguration.framework */; };
+		EACE237C11E047A20083EB38 /* UploadMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE237A11E047A20083EB38 /* UploadMedia.m */; };
+		EACE237D11E047A20083EB38 /* UploadMedia.xib in Resources */ = {isa = PBXBuildFile; fileRef = EACE237B11E047A20083EB38 /* UploadMedia.xib */; };
+		EACE238411E048620083EB38 /* CustomLoginPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE238011E048620083EB38 /* CustomLoginPopup.m */; };
+		EACE238511E048620083EB38 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE238211E048620083EB38 /* RootViewController.m */; };
+		EACE238611E048620083EB38 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EACE238311E048620083EB38 /* RootViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,11 +116,6 @@
 		EA0EB06C11D472A8006E5BEE /* OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth.m; sourceTree = "<group>"; };
 		EA0EB06D11D472A8006E5BEE /* OAuth+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAuth+UserDefaults.h"; sourceTree = "<group>"; };
 		EA0EB06E11D472A8006E5BEE /* OAuth+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAuth+UserDefaults.m"; sourceTree = "<group>"; };
-		EA0EB07011D472A8006E5BEE /* CustomLoginPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLoginPopup.h; sourceTree = "<group>"; };
-		EA0EB07111D472A8006E5BEE /* CustomLoginPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLoginPopup.m; sourceTree = "<group>"; };
-		EA0EB07211D472A8006E5BEE /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		EA0EB07311D472A8006E5BEE /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		EA0EB07411D472A8006E5BEE /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		EA0EB07511D472A8006E5BEE /* PlainOAuth-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PlainOAuth-Info.plist"; sourceTree = "<group>"; };
 		EA0EB07811D472A8006E5BEE /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		EA0EB07911D472A8006E5BEE /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
@@ -137,6 +134,14 @@
 		EA39520B1103DB2300D867AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EA39520D1103DB2B00D867AC /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		EA39520F1103DB3200D867AC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EACE237911E047A20083EB38 /* UploadMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadMedia.h; path = Shared/UploadMedia.h; sourceTree = "<group>"; };
+		EACE237A11E047A20083EB38 /* UploadMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadMedia.m; path = Shared/UploadMedia.m; sourceTree = "<group>"; };
+		EACE237B11E047A20083EB38 /* UploadMedia.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = UploadMedia.xib; path = Shared/UploadMedia.xib; sourceTree = "<group>"; };
+		EACE237F11E048620083EB38 /* CustomLoginPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomLoginPopup.h; path = Shared/CustomLoginPopup.h; sourceTree = "<group>"; };
+		EACE238011E048620083EB38 /* CustomLoginPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomLoginPopup.m; path = Shared/CustomLoginPopup.m; sourceTree = "<group>"; };
+		EACE238111E048620083EB38 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Shared/RootViewController.h; sourceTree = "<group>"; };
+		EACE238211E048620083EB38 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Shared/RootViewController.m; sourceTree = "<group>"; };
+		EACE238311E048620083EB38 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RootViewController.xib; path = Shared/RootViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,11 +333,14 @@
 		EA0EB06F11D472A8006E5BEE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				EA0EB07011D472A8006E5BEE /* CustomLoginPopup.h */,
-				EA0EB07111D472A8006E5BEE /* CustomLoginPopup.m */,
-				EA0EB07211D472A8006E5BEE /* RootViewController.h */,
-				EA0EB07311D472A8006E5BEE /* RootViewController.m */,
-				EA0EB07411D472A8006E5BEE /* RootViewController.xib */,
+				EACE237F11E048620083EB38 /* CustomLoginPopup.h */,
+				EACE238011E048620083EB38 /* CustomLoginPopup.m */,
+				EACE238111E048620083EB38 /* RootViewController.h */,
+				EACE238211E048620083EB38 /* RootViewController.m */,
+				EACE238311E048620083EB38 /* RootViewController.xib */,
+				EACE237911E047A20083EB38 /* UploadMedia.h */,
+				EACE237A11E047A20083EB38 /* UploadMedia.m */,
+				EACE237B11E047A20083EB38 /* UploadMedia.xib */,
 				EA0EB07511D472A8006E5BEE /* PlainOAuth-Info.plist */,
 			);
 			name = Shared;
@@ -416,7 +424,8 @@
 				EA0EB08C11D472A8006E5BEE /* signinBullet2.png in Resources */,
 				EA0EB08D11D472A8006E5BEE /* signinBullet1.png in Resources */,
 				EA0EB08F11D472A8006E5BEE /* TwitterLoginPopup.xib in Resources */,
-				EA0EB0A411D472A8006E5BEE /* RootViewController.xib in Resources */,
+				EACE237D11E047A20083EB38 /* UploadMedia.xib in Resources */,
+				EACE238611E048620083EB38 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,14 +457,15 @@
 				EA0EB09F11D472A8006E5BEE /* NSString+URLEncoding.m in Sources */,
 				EA0EB0A011D472A8006E5BEE /* OAuth.m in Sources */,
 				EA0EB0A111D472A8006E5BEE /* OAuth+UserDefaults.m in Sources */,
-				EA0EB0A211D472A8006E5BEE /* CustomLoginPopup.m in Sources */,
-				EA0EB0A311D472A8006E5BEE /* RootViewController.m in Sources */,
 				EA0EB0A611D472A8006E5BEE /* NSObject+SBJSON.m in Sources */,
 				EA0EB0A711D472A8006E5BEE /* NSString+SBJSON.m in Sources */,
 				EA0EB0A811D472A8006E5BEE /* SBJsonBase.m in Sources */,
 				EA0EB0A911D472A8006E5BEE /* SBJsonParser.m in Sources */,
 				EA0EB0AA11D472A8006E5BEE /* SBJsonWriter.m in Sources */,
 				EA0EB0AB11D472A8006E5BEE /* main.m in Sources */,
+				EACE237C11E047A20083EB38 /* UploadMedia.m in Sources */,
+				EACE238411E048620083EB38 /* CustomLoginPopup.m in Sources */,
+				EACE238511E048620083EB38 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +484,7 @@
 				GCC_PREFIX_HEADER = PlainOAuth_Prefix.pch;
 				INFOPLIST_FILE = "PlainOAuth-Info.plist";
 				PRODUCT_NAME = PlainOAuth;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -504,6 +514,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.2;
+				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};

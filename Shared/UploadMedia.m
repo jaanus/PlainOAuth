@@ -77,11 +77,9 @@
     imagePicker.mediaTypes = [NSArray arrayWithObject:@"public.image"];
     
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        NSLog(@"doing the popover blah");
         if (!popover) {
             popover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];            
         }
-        NSLog(@"our popover is %@", popover);
         [popover presentPopoverFromRect:pickButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         
     } else {

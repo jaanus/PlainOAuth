@@ -211,12 +211,12 @@
 
 - (void)twitterLoginPopupDidCancel:(TwitterLoginPopup *)popup {
     [self dismissModalViewControllerAnimated:YES];        
-    [loginPopup release]; // was retained as ivar in "login"
+    [loginPopup release]; loginPopup = nil; // was retained as ivar in "login"
 }
 
 - (void)twitterLoginPopupDidAuthorize:(TwitterLoginPopup *)popup {
     [self dismissModalViewControllerAnimated:YES];        
-    [loginPopup release]; // was retained as ivar in "login"
+    [loginPopup release]; loginPopup = nil; // was retained as ivar in "login"
     [oAuth saveOAuthTwitterContextToUserDefaults];
     [self resetUi];
 }

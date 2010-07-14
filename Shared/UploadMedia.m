@@ -3,7 +3,7 @@
 //  PlainOAuth
 //
 //  Created by Jaanus Kase on 03.07.10.
-//  Copyright 2010 Intuit. All rights reserved.
+//  Copyright 2010. All rights reserved.
 //
 
 #import "UploadMedia.h"

@@ -15,6 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### July 14, 2010
+
+* Fixed a double-encoding problem in OAuth authorization header. (Thanks Chris Burkhardt.)
+
 ### July 3, 2010
 
 * UI detail: Twitter status field now resigns first responder after each post or when you press some other button in the UI, so you could see the controls below.

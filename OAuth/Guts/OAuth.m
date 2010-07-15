@@ -321,11 +321,11 @@
 		[chunks addObject:[NSString stringWithFormat:@"%@=\"%@\"", part, [[self valueForKey:part] encodedURLParameterString]]];
 	}
 	
-	// Add parameter values if any. Note that we URLencode them. They don't really have to be sorted, but we do it anyway
+	// Add parameter values if any. They don't really have to be sorted, but we do it anyway
 	// just to be nice and make the output somewhat more parsable.
 	if (params) {
 		for (NSString *key in [[params allKeys] sortedArrayUsingSelector:@selector(compare:)]) {		
-			[chunks addObject:[NSString stringWithFormat:@"%@=\"%@\"", key, [[params objectForKey:key] encodedURLParameterString]]];
+			[chunks addObject:[NSString stringWithFormat:@"%@=\"%@\"", key, [params objectForKey:key]]];
 		}
 	}
 	

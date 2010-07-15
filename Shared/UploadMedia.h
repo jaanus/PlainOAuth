@@ -12,8 +12,9 @@
 
 @interface UploadMedia : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     IBOutlet UIImageView *imageView;
-    IBOutlet UIButton *postButton, *pickButton;
+    IBOutlet UIButton *postButton, *pickButton, *postProfileImageButton;
     IBOutlet UITextView *textView;
+    IBOutlet UILabel *profileLabel, *twitpicLabel;
     UIPopoverController *popover;
     OAuth *oAuth;
 }
@@ -22,5 +23,6 @@
 
 -(IBAction)didPressPickImage:(id)sender;
 -(IBAction)didPressPostImage:(id)sender;
+-(IBAction)didPressPostProfileImage:(id)sender;
 
 @end

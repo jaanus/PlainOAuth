@@ -118,6 +118,24 @@
     
 }
 
+// Twitter profile image post example.
+// This returns a 200 response but does not seem to actually work, maybe due to a bug on Twitter side.
+// See http://groups.google.com/group/twitter-development-talk/browse_thread/thread/df7102654c3077be/163abfbdcd24b8bf for updates.
+-(IBAction)didPressPostProfileImage:(id)sender {
+    NSString *postUrl = @"http://api.twitter.com/1/account/update_profile_image.json";
+    ASIFormDataRequest *req = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:postUrl]];
+    [req addRequestHeader:@"Authorization" value:[oAuth oAuthHeaderForMethod:@"POST" andUrl:postUrl andParams:nil]];
+    
+    [req setData:UIImageJPEGRepresentation(imageView.image, 0.8)
+    withFileName:@"myProfileImage.jpg"
+  andContentType:@"image/jpeg" forKey:@"image"];    
+    
+    [req startSynchronous];
+    NSLog(@"Got HTTP status code from Twitter after posting profile image: %d", [req responseStatusCode]);
+    NSLog(@"Response string: %@", [req responseString]);
+    [req release];
+}
+
 #pragma mark -
 #pragma mark UI configuration
 
@@ -140,10 +158,12 @@
         [popover dismissPopoverAnimated:YES];
     }
     
-    
     imageView.image = [info valueForKey:UIImagePickerControllerEditedImage];
     
     postButton.hidden = NO;
+    postProfileImageButton.hidden = NO;
+    twitpicLabel.hidden = NO;
+    profileLabel.hidden = NO;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

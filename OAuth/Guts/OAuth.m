@@ -9,6 +9,7 @@
 #include <CommonCrypto/CommonDigest.h>
 #import "OAHMAC_SHA1SignatureProvider.h"
 #import "NSString+URLEncoding.h"
+#import "ASIFormDataRequest.h"
 #import "OAuthTwitterCallbacks.h"
 
 @implementation OAuth

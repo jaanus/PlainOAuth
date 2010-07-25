@@ -6,7 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ASIFormDataRequest.h"
 #import "OAuthTwitterCallbacks.h"
 
 @interface OAuth : NSObject {

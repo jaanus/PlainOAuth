@@ -15,6 +15,8 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+* Fixed a crash when user tapped on "get PIN" link quickly twice in a row. (Thanks Matthew Mattson.)
+
 ### July 14, 2010
 
 * Fixed a double-encoding problem in OAuth authorization header. (Thanks Chris Burkhardt.)

@@ -16,7 +16,7 @@
     UINavigationControllerDelegate, UIWebViewDelegate> {
     IBOutlet UITextField *pinField;
     
-    IBOutlet UIButton *signInButton;
+    IBOutlet UIButton *getPinButton, *signInButton;
     
     IBOutlet UILabel *typePinBelow;
     IBOutlet UIImageView *signInBullet2;

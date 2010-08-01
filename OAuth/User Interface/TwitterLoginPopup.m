@@ -16,6 +16,9 @@
 #pragma mark Button actions
 
 - (IBAction)getPin:(id)sender {
+    
+    getPinButton.enabled = NO;
+    getPinButton.alpha = 0.5;
 		
 	[self.uiDelegate tokenRequestDidStart:self];
 	
@@ -71,6 +74,7 @@
 							waitUntilDone:NO];
 		return;
 	}
+    
 
 	NSURL *myURL = [NSURL URLWithString:[NSString
 										 stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@",
@@ -295,6 +299,10 @@
 
     // If user was looking at PIN in webview, activate the PIN text field and bring up keyboard.
 	if (viewController == self) {
+        
+        getPinButton.enabled = YES;
+        getPinButton.alpha = 1;
+        
 		if (willBeEditingPin) {
             
             pinField.enabled = YES;

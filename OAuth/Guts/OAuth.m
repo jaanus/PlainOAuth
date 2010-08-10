@@ -167,7 +167,10 @@
 	self.oauth_token_secret = @"";
 	
 	// Calculate the header.
-	NSString *oauth_header = [self oAuthHeaderForMethod:@"GET" andUrl:url andParams:nil];
+    // request_token step must have oauth_callback set to "oob."
+    // http://twitter.com/episod/status/20508312741, http://twitter.com/episod/status/20722145979
+    NSDictionary *params = [NSDictionary dictionaryWithObject:@"oob" forKey:@"oauth_callback"];
+	NSString *oauth_header = [self oAuthHeaderForMethod:@"GET" andUrl:url andParams:params];
 	
 	// Synchronously perform the HTTP request.
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];

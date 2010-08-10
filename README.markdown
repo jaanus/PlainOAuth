@@ -15,6 +15,14 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### August 9, 2010
+
+* Re-enable the "get PIN" link if token request fails.
+
+* Now sending "oauth_callback=oob" parameter when requesting the original token, per Twitter’s recommendation. (http://twitter.com/episod/status/20722145979)
+
+### July 31, 2010
+
 * Fixed a crash when user tapped on "get PIN" link quickly twice in a row. (Thanks Matthew Mattson.)
 
 ### July 14, 2010

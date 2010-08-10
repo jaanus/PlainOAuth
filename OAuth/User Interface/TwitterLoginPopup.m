@@ -127,6 +127,10 @@
 		return;
 	}
 
+    // Re-enable the link to try again.
+    getPinButton.enabled = YES;
+    getPinButton.alpha = 1;
+    
 	[self.uiDelegate tokenRequestDidFail:self];
 	
 }

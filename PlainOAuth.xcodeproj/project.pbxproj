@@ -176,7 +176,6 @@
 				EA0EB03511D472A8006E5BEE /* OAuth */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				EA23B42911F9549900EE464B /* MobileCoreServices.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -184,6 +183,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA23B42911F9549900EE464B /* MobileCoreServices.framework */,
 				EA3951F61103DB0A00D867AC /* Security.framework */,
 				EA39520B1103DB2300D867AC /* CFNetwork.framework */,
 				EA39520D1103DB2B00D867AC /* libz.1.2.3.dylib */,
@@ -404,7 +404,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PlainOAuth" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";

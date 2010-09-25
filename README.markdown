@@ -15,6 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### September 24, 2010
+
+* Fixed a layout problem with the “Get PIN from Twitter” button. Text was sometimes truncated.
+
 ### August 9, 2010
 
 * Re-enable the "get PIN" link if token request fails.

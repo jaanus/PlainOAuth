@@ -15,6 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### September 26, 2010
+
+* Included an example of how to add additional POST parameters when posting a status, e.g to add location.
+
 ### September 24, 2010
 
 * Fixed a layout problem with the “Get PIN from Twitter” button. Text was sometimes truncated.

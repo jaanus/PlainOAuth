@@ -53,6 +53,7 @@
         NSLog(@"Resetting UI to authorized state. Twitter user: %@", oAuth.screen_name);
         postButton.enabled = YES;
         statusText.enabled = YES;
+        includeLocation.enabled = YES;
         
         UIBarButtonItem *logout = [[UIBarButtonItem alloc] initWithTitle:@"Log out"
                                                                    style:UIBarButtonItemStyleBordered
@@ -73,6 +74,7 @@
         postButton.enabled = NO;
         statusText.text = @"";
         statusText.enabled = NO;
+        includeLocation.enabled = NO;
         
         UIBarButtonItem *login = [[UIBarButtonItem alloc] initWithTitle:@"Log in"
                                                                    style:UIBarButtonItemStyleBordered
@@ -145,13 +147,25 @@
     
     ASIFormDataRequest *request = [[ASIFormDataRequest alloc]
                                    initWithURL:[NSURL URLWithString:postUrl]];
-    [request setPostValue:statusText.text forKey:@"status"];
+    
+    NSMutableDictionary *postInfo = [NSMutableDictionary
+                                     dictionaryWithObject:statusText.text
+                                     forKey:@"status"];
+    
+    if (includeLocation.on) {        
+        // Hardcoded to Cupertino, CA for testing, same coordinates as in Apple/Twitter examples.
+        [postInfo setObject:@"37.33182" forKey:@"lat"];
+        [postInfo setObject:@"-122.03118" forKey:@"long"];
+    }
+    
+    for (NSString *key in [postInfo allKeys]) {
+        [request setPostValue:[postInfo objectForKey:key] forKey:key];
+    }
     
     [request addRequestHeader:@"Authorization"
                         value:[oAuth oAuthHeaderForMethod:@"POST"
                                                    andUrl:postUrl
-                                                andParams:[NSDictionary dictionaryWithObject:statusText.text
-                                                                                      forKey:@"status"]]];
+                                                andParams:postInfo]];
     
     [request startSynchronous];
     

@@ -18,6 +18,7 @@
     IBOutlet UITextField *statusText;
     IBOutlet UILabel *signedInAs;
     IBOutlet UITextView *tweets;
+    IBOutlet UISwitch *includeLocation;
         
     CustomLoginPopup *loginPopup;
 	

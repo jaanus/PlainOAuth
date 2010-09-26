@@ -491,7 +491,7 @@
 				GCC_PREFIX_HEADER = PlainOAuth_Prefix.pch;
 				INFOPLIST_FILE = "PlainOAuth-Info.plist";
 				PRODUCT_NAME = PlainOAuth;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -506,7 +506,7 @@
 				GCC_PREFIX_HEADER = PlainOAuth_Prefix.pch;
 				INFOPLIST_FILE = "PlainOAuth-Info.plist";
 				PRODUCT_NAME = PlainOAuth;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -519,9 +519,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.2;
-				VALID_ARCHS = armv7;
+				SDKROOT = iphoneos4.1;
+				VALID_ARCHS = "";
 			};
 			name = Debug;
 		};
@@ -533,8 +534,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos4.1;
+				VALID_ARCHS = "";
 			};
 			name = Release;
 		};

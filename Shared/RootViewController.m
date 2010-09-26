@@ -199,7 +199,6 @@
 }
 
 - (IBAction)didPressUploadMedia:(id)sender {
-    NSLog(@"paskat");
     UploadMedia *uploadMedia = [[UploadMedia alloc] initWithNibName:@"UploadMedia" bundle:nil];
     uploadMedia.oAuth = oAuth;
     [self.navigationController pushViewController:uploadMedia animated:YES];

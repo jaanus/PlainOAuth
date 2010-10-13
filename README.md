@@ -15,6 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### October 12, 2010
+
+* Updated graphics with Retina versions, fixed text layout, login UI now looks good on Retina display.
+
 ### September 26, 2010
 
 * Included an example of how to add additional POST parameters when posting a status, e.g to add location.

@@ -110,11 +110,11 @@ If you use the Twitter convenience methods, all HTTP calls are synchronous. This
 
 Here are three posts on the background of this, that may help you understand this code better.
 
-[New version of PlainOAuth, the example Twitter OAuth app for iPhone](http://www.jaanuskase.com/en/2010/06/new_version_of_plainoauth_the.html)
+[New version of PlainOAuth, the example Twitter OAuth app for iPhone](http://jaanus.com/post/1451098734/new-version-of-plainoauth-the)
 
-[Understanding the guts of Twitter's OAuth for client apps](http://www.jaanuskase.com/en/2010/01/an_example_iphone_twitter_app.html)
+[Understanding the guts of Twitter's OAuth for client apps](http://jaanus.com/post/1451098316/understanding-the-guts-of-twit)
 
-[An example iPhone Twitter app with OAuth authentication](http://www.jaanuskase.com/en/2010/01/an_example_iphone_twitter_app.html)
+[An example iPhone Twitter app with OAuth authentication](http://jaanus.com/post/1451098350/an-example-iphone-twitter-app)
 
 ## Acknowledgements
 

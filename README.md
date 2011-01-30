@@ -15,6 +15,20 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### January 30, 2011
+
+* Added handling of URL callback-based flow in addition to PIN-based flow. URL callback is more streamlined, as you don’t need the user to input PIN or click a button to start the process.
+
+Note that there are a few things you must do to make sure your URL callback-based flow works.
+
+* Switch your app type in Twitter backend from “Client” to “Browser.” According to my testing, the “Browser” app type can handle both PIN- and URL-based flows. When you pass “oob” as the callback URL to “Browser” app, it behaves as a PIN-based app. The opposite (passing a non-OOB URL to PIN-based app) yields an error.
+* When instatiating TwitterLoginPopup, make sure to set its flowType to TwitterLoginCallbackFlow, and set the oAuthCallbackUrl property to the URL of your app.
+* Declare in your app’s info.plist that you can handle the URL schema that you use in oAuthCallbackUrl.
+* Implement application:openURL:sourceApplication:annotation: in your app delegate to receive the oauth\_verifier that Twitter gives you.
+* Call through to the authorizeOAuthVerifier: method of TwitterLoginPopup from your URL handler.
+
+All of the above is demonstrated in the PlainOAuth example app.
+
 ### October 12, 2010
 
 * Updated graphics with Retina versions, fixed text layout, login UI now looks good on Retina display.

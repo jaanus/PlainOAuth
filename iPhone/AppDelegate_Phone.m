@@ -20,16 +20,34 @@
 	
     [window makeKeyAndVisible];
 	
-	RootViewController *root = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
+	root = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
 	nav = [[UINavigationController alloc] initWithRootViewController:root];
 	[window addSubview:nav.view];
-	[root release];
 	
 	return YES;
 }
 
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+
+    // naively parse url
+    NSArray *urlComponents = [[url absoluteString] componentsSeparatedByString:@"?"];
+    NSArray *requestParameterChunks = [[urlComponents objectAtIndex:1] componentsSeparatedByString:@"&"];
+    for (NSString *chunk in requestParameterChunks) {
+        NSArray *keyVal = [chunk componentsSeparatedByString:@"="];
+        
+        if ([[keyVal objectAtIndex:0] isEqualToString:@"oauth_verifier"]) {
+            [root handleOAuthVerifier:[keyVal objectAtIndex:1]];
+        }
+        
+    }
+    
+    return YES;
+}
+
+
 - (void)dealloc {
+	[root release];
 	[nav release];
     [window release];
     [super dealloc];

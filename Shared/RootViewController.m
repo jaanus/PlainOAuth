@@ -11,8 +11,17 @@
 #import "OAuth+UserDefaults.h"
 #import "OAuthConsumerCredentials.h"
 #import "CustomLoginPopup.h"
+#import "TwitterLoginPopup.h"
 #import "JSON.h"
 #import "ASIFormDataRequest.h"
+
+@interface RootViewController (PrivateMethods)
+
+- (void)resetUi;
+- (void)presentLoginWithFlowType:(TwitterLoginFlowType)flowType;
+
+@end
+
 
 @implementation RootViewController
 
@@ -121,15 +130,13 @@
 #pragma mark Button actions
 
 - (void)login {
-    if (!loginPopup) {
-        loginPopup = [[CustomLoginPopup alloc] initWithNibName:@"TwitterLoginPopup" bundle:nil];        
-        loginPopup.oAuth = oAuth;
-        loginPopup.delegate = self;
-        loginPopup.uiDelegate = self;
-    }
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginPopup];
-    [self presentModalViewController:nav animated:YES];        
-    [nav release];
+    
+    UIActionSheet *pickFlow = [[UIActionSheet alloc] initWithTitle:@"Select login flow" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"PIN", @"URL callback", nil];
+    [pickFlow showInView:self.view];
+    [pickFlow release];
+    
+    
+
 }
 
 - (void)logout {
@@ -266,6 +273,46 @@
 - (void) authorizationRequestDidFail:(TwitterLoginPopup *)twitterLogin {
     NSLog(@"token request did fail");
     [loginPopup.activityIndicator stopAnimating];
+}
+
+
+#pragma mark -
+#pragma mark UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) { // PIN-based
+        [self presentLoginWithFlowType:TwitterLoginPinFlow];
+    } else if (buttonIndex == 1) { // URL-based
+        [self presentLoginWithFlowType:TwitterLoginCallbackFlow];
+    }
+}
+
+#pragma mark -
+#pragma mark Present login flows
+
+- (void) presentLoginWithFlowType:(TwitterLoginFlowType)flowType {
+        
+    if (!loginPopup) {
+        
+        if (flowType == TwitterLoginPinFlow) {
+            loginPopup = [[CustomLoginPopup alloc] initWithNibName:@"TwitterLoginPopup" bundle:nil];
+        } else if (flowType == TwitterLoginCallbackFlow) {
+            loginPopup = [[CustomLoginPopup alloc] initWithNibName:@"TwitterLoginCallbackFlow" bundle:nil];
+            loginPopup.oAuthCallbackUrl = @"plainoauth://handleOAuthLogin";
+        }
+        
+        loginPopup.flowType = flowType;
+        loginPopup.oAuth = oAuth;
+        loginPopup.delegate = self;
+        loginPopup.uiDelegate = self;
+    }
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginPopup];
+    [self presentModalViewController:nav animated:YES];        
+    [nav release];
+}
+
+- (void)handleOAuthVerifier:(NSString *)oauth_verifier {
+    [loginPopup authorizeOAuthVerifier:oauth_verifier];
 }
 
 

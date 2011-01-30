@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class RootViewController;
+
 @interface AppDelegate_Phone : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	UINavigationController *nav;
+    RootViewController *root;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

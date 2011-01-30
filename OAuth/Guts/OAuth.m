@@ -151,15 +151,25 @@
 #pragma mark Twitter convenience methods
 
 /**
+ * Convenience method for PIN-based flow. Start a token request with out-of-band URL.
+ */
+- (void) synchronousRequestTwitterToken {
+
+    // request_token step must have oauth_callback set to "oob" for PIN-based requests.
+    // http://twitter.com/episod/status/20508312741, http://twitter.com/episod/status/20722145979
+    
+    [self synchronousRequestTwitterTokenWithCallbackUrl:@"oob"];
+}
+
+/**
  * Given a request URL, request an unauthorized OAuth token from that URL. This starts
  * the process of getting permission from user. This is done synchronously. If you want
  * threading, do your own.
  *
  * This is the request/response specified in OAuth Core 1.0A section 6.1.
  */
-- (void) synchronousRequestTwitterToken {
-
-	NSString *url = @"https://twitter.com/oauth/request_token";
+- (void) synchronousRequestTwitterTokenWithCallbackUrl:(NSString *)callbackUrl {
+   	NSString *url = @"https://twitter.com/oauth/request_token";
 	
 	// Invalidate the previous request token, whether it was authorized or not.
 	self.oauth_token_authorized = NO; // We are invalidating whatever token we had before.
@@ -167,9 +177,14 @@
 	self.oauth_token_secret = @"";
 	
 	// Calculate the header.
-    // request_token step must have oauth_callback set to "oob."
-    // http://twitter.com/episod/status/20508312741, http://twitter.com/episod/status/20722145979
-    NSDictionary *params = [NSDictionary dictionaryWithObject:@"oob" forKey:@"oauth_callback"];
+    
+    // Guard against someone forgetting to set the callback. Pretend that we have out-of-band request
+    // in that case.
+    NSString *_callbackUrl = callbackUrl;
+    if (!callbackUrl) {
+        _callbackUrl = @"oob";
+    }
+    NSDictionary *params = [NSDictionary dictionaryWithObject:_callbackUrl forKey:@"oauth_callback"];
 	NSString *oauth_header = [self oAuthHeaderForMethod:@"GET" andUrl:url andParams:params];
 	
 	// Synchronously perform the HTTP request.
@@ -194,7 +209,7 @@
 		if ([self.delegate respondsToSelector:@selector(requestTwitterTokenDidSucceed:)]) {
 			[delegate requestTwitterTokenDidSucceed:self];
 		}
-	}
+	} 
 }
 
 

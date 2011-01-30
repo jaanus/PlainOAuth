@@ -13,7 +13,7 @@
 
 @class OAuth, CustomLoginPopup;
 
-@interface RootViewController : UIViewController <TwitterLoginPopupDelegate, TwitterLoginUiFeedback> {
+@interface RootViewController : UIViewController <TwitterLoginPopupDelegate, TwitterLoginUiFeedback, UIActionSheetDelegate> {
     IBOutlet UIButton *postButton, *latestTweetsButton, *uploadMediaButton;
     IBOutlet UITextField *statusText;
     IBOutlet UILabel *signedInAs;
@@ -29,6 +29,7 @@
 - (IBAction)didPressLatestTweets:(id)sender;
 - (IBAction)didPressUploadMedia:(id)sender;
 
-- (void)resetUi;
+- (void)handleOAuthVerifier:(NSString *)oauth_verifier;
+
 
 @end

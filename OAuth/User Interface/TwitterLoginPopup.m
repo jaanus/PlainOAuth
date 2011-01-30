@@ -9,9 +9,26 @@
 #import "OAuth.h"
 #import "TwitterWebViewController.h"
 
+@interface TwitterLoginPopup (PrivateMethods)
+
+- (IBAction)getPin:(id)sender;
+- (IBAction)savePin:(id)sender;
+- (void) focusPinField;
+
+- (void) requestTokenWithCallbackUrl:(NSString *)callbackUrl;
+
+- (void) fixSignInButtonPositionWithOrientation:(UIDeviceOrientation)orientation andAnimationDuration:(NSTimeInterval)duration;
+- (CGFloat) keyboardHeightFromNotification:(NSNotification *)aNotification;
+
+@end
+
+
 @implementation TwitterLoginPopup
 
-@synthesize delegate, uiDelegate, oAuth;
+
+
+
+@synthesize delegate, uiDelegate, oAuth, flowType, oAuthCallbackUrl;
 
 #pragma mark Button actions
 
@@ -20,30 +37,14 @@
     getPinButton.enabled = NO;
     getPinButton.alpha = 0.5;
 		
-	[self.uiDelegate tokenRequestDidStart:self];
-	
-	
-	NSInvocationOperation *operation = [[NSInvocationOperation alloc]
-										initWithTarget:oAuth
-										selector:@selector(synchronousRequestTwitterToken)
-										object:nil];
-	
-	[queue addOperation:operation];
-	[operation release];
+    [self requestTokenWithCallbackUrl:nil];
 }
 
 - (IBAction)savePin:(id)sender {
     [pinField resignFirstResponder];
     
-	// delegate authorizationRequestDidStart
-	[self.uiDelegate authorizationRequestDidStart:self];
-
-	NSInvocationOperation *operation = [[NSInvocationOperation alloc]
-										initWithTarget:oAuth
-										selector:@selector(synchronousAuthorizeTwitterTokenWithVerifier:)
-										object:pinField.text];
-	[queue addOperation:operation];
-	[operation release];
+    [self authorizeOAuthVerifier:pinField.text];
+    
 }
 
 - (void) seePinAgain {
@@ -58,6 +59,22 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self]; // fix?
 	[self.delegate twitterLoginPopupDidCancel:self];
+}
+
+#pragma mark -
+#pragma mark Authorize OAuth verifier received through URL callback or UI
+
+- (void)authorizeOAuthVerifier:(NSString *)oauth_verifier {
+    // delegate authorizationRequestDidStart
+	[self.uiDelegate authorizationRequestDidStart:self];
+    
+	NSInvocationOperation *operation = [[NSInvocationOperation alloc]
+										initWithTarget:oAuth
+										selector:@selector(synchronousAuthorizeTwitterTokenWithVerifier:)
+										object:pinField.text];
+	[queue addOperation:operation];
+	[operation release];
+    
 }
 
 #pragma mark -
@@ -80,38 +97,45 @@
 										 stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@",
 										 _oAuth.oauth_token]];
 	
-	if (!webViewController) {
-		webViewController = [[TwitterWebViewController alloc] initWithNibName:nil bundle:nil];
+    if (flowType == TwitterLoginPinFlow) {
         
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
-                                       initWithTitle:@"Enter PIN" style:UIBarButtonItemStylePlain target:nil action:nil];
-        self.navigationItem.backBarButtonItem = backButton;
-        [backButton release];
-        webViewController.managingVc = self;
+        // no need for VC in callback flow since webview is the only child view there
+        if (!webViewController) {
+            webViewController = [[TwitterWebViewController alloc] initWithNibName:nil bundle:nil];
+            
+            UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
+                                           initWithTitle:@"Enter PIN" style:UIBarButtonItemStylePlain target:nil action:nil];
+            self.navigationItem.backBarButtonItem = backButton;
+            [backButton release];
+            webViewController.managingVc = self;
+            
+        }
         
-	}
-	
-	if (!webView) {
-        CGRect appFrame = [UIScreen mainScreen].applicationFrame;
+        // for callback flow, webview is initialized in XIB as the only child view, no need to init or push to navcontroller
+        if (!webView) {
+            CGRect appFrame = [UIScreen mainScreen].applicationFrame;
+            
+            webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,appFrame.size.width,appFrame.size.height)];
+            webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            [webViewController.view addSubview:webView];
+            webView.dataDetectorTypes = UIDataDetectorTypeNone;
+            webView.scalesPageToFit = YES;
+            webView.delegate = self;
+        }
+            
+        [[self navigationController] pushViewController:webViewController animated:YES];
         
-		webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,appFrame.size.width,appFrame.size.height)];
-        webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-		[webViewController.view addSubview:webView];
-		webView.dataDetectorTypes = UIDataDetectorTypeNone;
-        webView.scalesPageToFit = YES;
-        webView.delegate = self;
-	}
+        UIBarButtonItem *forward = [[UIBarButtonItem alloc] initWithTitle:@"See PIN >"
+                                                                    style:UIBarButtonItemStyleBordered
+                                                                   target:self
+                                                                   action:@selector(seePinAgain)];
+        self.navigationItem.rightBarButtonItem = forward;
+        [forward release];
+        willBeEditingPin = YES;
         
-	[[self navigationController] pushViewController:webViewController animated:YES];
-	[webView loadRequest:[NSURLRequest requestWithURL:myURL]];
-	
-	UIBarButtonItem *forward = [[UIBarButtonItem alloc] initWithTitle:@"See PIN >"
-																style:UIBarButtonItemStyleBordered
-															   target:self
-															   action:@selector(seePinAgain)];
-	self.navigationItem.rightBarButtonItem = forward;
-	[forward release];
-	willBeEditingPin = YES;
+    }
+
+	[webView loadRequest:[NSURLRequest requestWithURL:myURL]];	
 
 	[self.uiDelegate tokenRequestDidSucceed:self];
 
@@ -183,22 +207,29 @@
 	oAuth.delegate = self;
 	self.navigationController.delegate = self;    
     
-    // disable step#2
-    pinField.enabled = NO;
-    signInButton.enabled = NO;
-    signInButton.alpha = 0.5;
-    typePinBelow.alpha = 0.5;
-    signInBullet2.alpha = 0.5;
-	
-	// Listen for keyboard hide/show notifications so we can properly reconfigure the UI
+    // Listen for keyboard hide/show notifications so we can properly reconfigure the UI
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification object:nil];        
     
-    // XIB is done with portrait layout. If we were launched in landscape, this fixes the button positioning.
-	[self fixSignInButtonPositionWithOrientation:self.interfaceOrientation andAnimationDuration:0];
+    
+    // set up UI for pin-based flow
+    if (flowType == TwitterLoginPinFlow) {
+        // disable step#2
+        pinField.enabled = NO;
+        signInButton.enabled = NO;
+        signInButton.alpha = 0.5;
+        typePinBelow.alpha = 0.5;
+        signInBullet2.alpha = 0.5;        
+        // XIB is done with portrait layout. If we were launched in landscape, this fixes the button positioning.
+        [self fixSignInButtonPositionWithOrientation:self.interfaceOrientation andAnimationDuration:0];
+    }    	
+    
+    if (flowType == TwitterLoginCallbackFlow) {
+        [self requestTokenWithCallbackUrl:oAuthCallbackUrl];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -245,6 +276,8 @@
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [oAuthCallbackUrl release];
 	
 	[webView release];
 	[webViewController release];
@@ -256,7 +289,17 @@
 #pragma mark -
 #pragma mark Custom helpers, called from appropriate places in flow
 
-
+- (void) requestTokenWithCallbackUrl:(NSString *)callbackUrl {
+    [self.uiDelegate tokenRequestDidStart:self];
+	
+	NSInvocationOperation *operation = [[NSInvocationOperation alloc]
+										initWithTarget:oAuth
+										selector:@selector(synchronousRequestTwitterTokenWithCallbackUrl:)
+										object:callbackUrl];
+	
+	[queue addOperation:operation];
+	[operation release];
+}
 
 - (void) focusPinField {
     if (signInButton.enabled) {
@@ -291,7 +334,7 @@
 
 - (void)navigationController:(UINavigationController *)navigationController
       willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    if (viewController == self) {
+    if ((viewController == self) && (flowType == TwitterLoginPinFlow)) {
 		if (willBeEditingPin) {
             [self fixSignInButtonPositionWithOrientation:self.interfaceOrientation andAnimationDuration:0];
         }
@@ -301,25 +344,28 @@
 - (void)navigationController:(UINavigationController *)navigationController
        didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
 
-    // If user was looking at PIN in webview, activate the PIN text field and bring up keyboard.
-	if (viewController == self) {
+    if (flowType == TwitterLoginPinFlow) {
         
-        getPinButton.enabled = YES;
-        getPinButton.alpha = 1;
-        
-		if (willBeEditingPin) {
+        // If user was looking at PIN in webview, activate the PIN text field and bring up keyboard.
+        if (viewController == self) {
             
-            pinField.enabled = YES;
-            signInButton.enabled = YES;
-            signInButton.alpha = 1;
-            typePinBelow.alpha = 1;
-            signInBullet2.alpha = 1;
+            getPinButton.enabled = YES;
+            getPinButton.alpha = 1;
+            
+            if (willBeEditingPin) {
+                
+                pinField.enabled = YES;
+                signInButton.enabled = YES;
+                signInButton.alpha = 1;
+                typePinBelow.alpha = 1;
+                signInBullet2.alpha = 1;
 
-			[pinField becomeFirstResponder];
-            
-            [self focusPinField];
-		}
-	}
+                [pinField becomeFirstResponder];
+                
+                [self focusPinField];
+            }
+        }
+    }
 }
 
 #pragma mark -

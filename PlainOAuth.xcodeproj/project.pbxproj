@@ -43,6 +43,7 @@
 		EA23B3E911F9531200EE464B /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EA23B3AF11F9531200EE464B /* ASINetworkQueue.m */; };
 		EA23B41411F9535100EE464B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EA23B41311F9535100EE464B /* Reachability.m */; };
 		EA23B42A11F9549900EE464B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA23B42911F9549900EE464B /* MobileCoreServices.framework */; };
+		EA25CABB12F61BF800C42D50 /* TwitterLoginCallbackFlow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA25CABA12F61BF800C42D50 /* TwitterLoginCallbackFlow.xib */; };
 		EA39520C1103DB2300D867AC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520B1103DB2300D867AC /* CFNetwork.framework */; };
 		EA39520E1103DB2B00D867AC /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520D1103DB2B00D867AC /* libz.1.2.3.dylib */; };
 		EA3952101103DB3200D867AC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520F1103DB3200D867AC /* SystemConfiguration.framework */; };
@@ -130,6 +131,7 @@
 		EA23B41211F9535100EE464B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		EA23B41311F9535100EE464B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		EA23B42911F9549900EE464B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		EA25CABA12F61BF800C42D50 /* TwitterLoginCallbackFlow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwitterLoginCallbackFlow.xib; sourceTree = "<group>"; };
 		EA3951F61103DB0A00D867AC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EA39520B1103DB2300D867AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EA39520D1103DB2B00D867AC /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
@@ -241,6 +243,7 @@
 				EA0EB03E11D472A8006E5BEE /* TwitterLoginPopup.h */,
 				EA0EB03F11D472A8006E5BEE /* TwitterLoginPopup.m */,
 				EA0EB04011D472A8006E5BEE /* TwitterLoginPopup.xib */,
+				EA25CABA12F61BF800C42D50 /* TwitterLoginCallbackFlow.xib */,
 				EA0EB04111D472A8006E5BEE /* TwitterWebViewController.h */,
 				EA0EB04211D472A8006E5BEE /* TwitterWebViewController.m */,
 			);
@@ -452,6 +455,7 @@
 				EA39B92512657DA700EA99DF /* signinBullet1@2x.png in Resources */,
 				EA39B92712657DAC00EA99DF /* signinBullet2@2x.png in Resources */,
 				EA39B92A12657E1A00EA99DF /* signinButtonBg@2x.png in Resources */,
+				EA25CABB12F61BF800C42D50 /* TwitterLoginCallbackFlow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +511,7 @@
 				GCC_PREFIX_HEADER = PlainOAuth_Prefix.pch;
 				INFOPLIST_FILE = "PlainOAuth-Info.plist";
 				PRODUCT_NAME = PlainOAuth;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -537,7 +541,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				VALID_ARCHS = "";
 			};
 			name = Debug;

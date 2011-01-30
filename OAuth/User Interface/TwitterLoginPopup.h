@@ -12,6 +12,11 @@
 
 @class OAuth, TwitterWebViewController;
 
+typedef enum {
+    TwitterLoginPinFlow,
+    TwitterLoginCallbackFlow
+} TwitterLoginFlowType;
+
 @interface TwitterLoginPopup : UIViewController <OAuthTwitterCallbacks,
     UINavigationControllerDelegate, UIWebViewDelegate> {
     IBOutlet UITextField *pinField;
@@ -24,28 +29,31 @@
 	id <TwitterLoginPopupDelegate> delegate;
 	id <TwitterLoginUiFeedback> uiDelegate;
 	
+    TwitterLoginFlowType flowType;
 	
 	NSOperationQueue *queue;
 	OAuth *oAuth;
-	UIWebView *webView;
+	IBOutlet UIWebView *webView;
 	TwitterWebViewController *webViewController;
 	BOOL willBeEditingPin;
         
     IBOutlet UIScrollView *scrollView;
     IBOutlet UIView *contentView;
+        
+    NSString *oAuthCallbackUrl;
 }
-
-- (IBAction)getPin:(id)sender;
-- (IBAction)savePin:(id)sender;
-
-- (void) focusPinField;
-- (void) fixSignInButtonPositionWithOrientation:(UIDeviceOrientation)orientation andAnimationDuration:(NSTimeInterval)duration;
-- (CGFloat) keyboardHeightFromNotification:(NSNotification *)aNotification;
 
 @property (assign) id<TwitterLoginPopupDelegate> delegate;
 @property (assign) id<TwitterLoginUiFeedback> uiDelegate;
 
+@property (assign) TwitterLoginFlowType flowType;
+
 @property (nonatomic, retain) OAuth *oAuth;
+@property (nonatomic, copy) NSString *oAuthCallbackUrl;
+
+// Call this when receiving the verifier as URL parameter in URL callback flow,
+// or when input in the UI.
+- (void)authorizeOAuthVerifier:(NSString *)oauth_verifier;
 
 @end
 

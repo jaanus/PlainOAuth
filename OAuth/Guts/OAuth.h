@@ -55,6 +55,7 @@
 
 // Twitter convenience methods
 - (void) synchronousRequestTwitterToken;
+- (void) synchronousRequestTwitterTokenWithCallbackUrl:(NSString *)callbackUrl;
 - (void) synchronousAuthorizeTwitterTokenWithVerifier:(NSString *)oauth_verifier;
 - (BOOL) synchronousVerifyTwitterCredentials;
 

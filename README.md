@@ -120,6 +120,19 @@ See OAuth.h, OAuth.m and the example app for a complete example.
 
 If you use the Twitter convenience methods, all HTTP calls are synchronous. This lets you do threading in a way that you like most yourself. The example app shows one possible approach.
 
+## Required frameworks
+
+If you copy PlainOAuth code to your app, make sure you have the following frameworks added to your project.
+
+* MobileCoreServices.framework
+* Security.framework
+* CFNetwork.framework
+* libz.1.2.3.dylib
+* SystemConfiguration.framework
+* UIKit.framework
+* Foundation.framework
+* CoreGraphics.framework
+
 ## Read more on my blog
 
 Here are three posts on the background of this, that may help you understand this code better.

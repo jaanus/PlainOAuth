@@ -112,6 +112,7 @@
     [req startSynchronous];
     
     NSLog(@"Got HTTP status code from TwitPic: %d", [req responseStatusCode]);
+    NSLog(@"Response string: %@", [req responseString]);
     NSDictionary *twitpicResponse = [[req responseString] JSONValue];
     textView.text = [NSString stringWithFormat:@"Posted image URL: %@", [twitpicResponse valueForKey:@"url"]];
     [req release];

@@ -15,6 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### March 13, 2011
+
+* Fixed compilation error with Xcode 4 (previously, complained about missing architectures.)
+
 ### January 30, 2011
 
 * Added handling of URL callback-based flow in addition to PIN-based flow. URL callback is more streamlined, as you don’t need the user to input PIN or click a button to start the process.

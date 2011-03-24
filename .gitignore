@@ -18,3 +18,5 @@ profile
 *.perspectivev3
 
 OAuthConsumerCredentials.h
+UserInterfaceState.*
+xcdebugger

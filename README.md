@@ -15,6 +15,12 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### March 24, 2011
+
+* Updated Twitter OAuth API URL-s to match documentation.
+* More debugging output when token authorization fails.
+* Misc small fixes and Xcode warning fix.
+
 ### March 13, 2011
 
 * Fixed compilation error with Xcode 4 (previously, complained about missing architectures.)

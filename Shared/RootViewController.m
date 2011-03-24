@@ -271,7 +271,7 @@
 }
 
 - (void) authorizationRequestDidFail:(TwitterLoginPopup *)twitterLogin {
-    NSLog(@"token request did fail");
+    NSLog(@"authorization token request did fail");
     [loginPopup.activityIndicator stopAnimating];
 }
 

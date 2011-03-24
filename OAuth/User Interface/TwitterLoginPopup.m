@@ -71,7 +71,7 @@
 	NSInvocationOperation *operation = [[NSInvocationOperation alloc]
 										initWithTarget:oAuth
 										selector:@selector(synchronousAuthorizeTwitterTokenWithVerifier:)
-										object:pinField.text];
+										object:oauth_verifier];
 	[queue addOperation:operation];
 	[operation release];
     

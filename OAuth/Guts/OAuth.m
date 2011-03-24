@@ -29,7 +29,7 @@
  * always work in the context of one app.
  */
 - (id) initWithConsumerKey:(NSString *)aConsumerKey andConsumerSecret:(NSString *)aConsumerSecret {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		oauth_consumer_key = [aConsumerKey copy];
 		oauth_consumer_secret = [aConsumerSecret copy];
 		oauth_signature_method = @"HMAC-SHA1";
@@ -169,7 +169,7 @@
  * This is the request/response specified in OAuth Core 1.0A section 6.1.
  */
 - (void) synchronousRequestTwitterTokenWithCallbackUrl:(NSString *)callbackUrl {
-   	NSString *url = @"https://twitter.com/oauth/request_token";
+   	NSString *url = @"https://api.twitter.com/oauth/request_token";
 	
 	// Invalidate the previous request token, whether it was authorized or not.
 	self.oauth_token_authorized = NO; // We are invalidating whatever token we had before.
@@ -221,7 +221,7 @@
  */
 - (void) synchronousAuthorizeTwitterTokenWithVerifier:(NSString *)oauth_verifier {
 	
-	NSString *url = @"https://twitter.com/oauth/access_token";
+	NSString *url = @"https://api.twitter.com/oauth/access_token";
 	
 	// We manually specify the token as a param, because it has not yet been authorized
 	// and the automatic state checking wouldn't include it in signature construction or header,
@@ -239,6 +239,10 @@
 	[request startSynchronous];
 	
 	if ([request error]) {
+        
+        NSLog(@"HTTP return code for token authorization error: %d, message: %@, string: %@", request.responseStatusCode, request.responseStatusMessage, request.responseString);
+        NSLog(@"OAuth header was: %@", oauth_header);
+        
 		if ([self.delegate respondsToSelector:@selector(authorizeTwitterTokenDidFail:)]) {
 			[delegate authorizeTwitterTokenDidFail:self];
 		}
@@ -264,7 +268,7 @@
  */
 - (BOOL) synchronousVerifyTwitterCredentials {
 	
-	NSString *url = @"https://twitter.com/account/verify_credentials.json";
+	NSString *url = @"https://api.twitter.com/1/account/verify_credentials.json";
 	
 	NSString *oauth_header = [self oAuthHeaderForMethod:@"GET" andUrl:url andParams:nil];
 	

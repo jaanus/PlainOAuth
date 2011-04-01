@@ -116,7 +116,7 @@
 			[_params setObject:[[params objectForKey:key] encodedURLParameterString] forKey:key];
 		}
 	}
-	
+    
 	// Given a signature base and secret key, calculate the signature.
 	NSString *oauth_signature = [sigProvider
 								 signClearText:[self oauth_signature_base:method
@@ -185,11 +185,11 @@
         _callbackUrl = @"oob";
     }
     NSDictionary *params = [NSDictionary dictionaryWithObject:_callbackUrl forKey:@"oauth_callback"];
-	NSString *oauth_header = [self oAuthHeaderForMethod:@"GET" andUrl:url andParams:params];
+	NSString *oauth_header = [self oAuthHeaderForMethod:@"POST" andUrl:url andParams:params];
 	
 	// Synchronously perform the HTTP request.
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-	request.requestMethod = @"GET";
+	request.requestMethod = @"POST";
 	[request addRequestHeader:@"Authorization" value:oauth_header];
 	[request startSynchronous];
 	
@@ -231,10 +231,10 @@
 							oauth_verifier, @"oauth_verifier",
 							nil];
 	
-	NSString *oauth_header = [self oAuthHeaderForMethod:@"GET" andUrl:url andParams:params andTokenSecret:oauth_token_secret];
+	NSString *oauth_header = [self oAuthHeaderForMethod:@"POST" andUrl:url andParams:params andTokenSecret:oauth_token_secret];
 
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-	request.requestMethod = @"GET";
+	request.requestMethod = @"POST";
 	[request addRequestHeader:@"Authorization" value:oauth_header];
 	[request startSynchronous];
 	

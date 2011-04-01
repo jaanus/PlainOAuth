@@ -68,6 +68,11 @@
     // delegate authorizationRequestDidStart
 	[self.uiDelegate authorizationRequestDidStart:self];
     
+    // Delay to work around a Twitter API bug.
+    // https://twitter.com/#!/twitterapi/status/53836545618219008
+    NSLog(@"Delaying for five seconds to work around a Twitter API bug…");
+    [NSThread sleepForTimeInterval:5];
+    
 	NSInvocationOperation *operation = [[NSInvocationOperation alloc]
 										initWithTarget:oAuth
 										selector:@selector(synchronousAuthorizeTwitterTokenWithVerifier:)

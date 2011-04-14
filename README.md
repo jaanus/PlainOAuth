@@ -15,6 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### April 13, 2011
+
+* Fixed a memory leak.
+
 ### April 9, 2011
 
 * Twitter seems to have fixed their infrastructure problems with token authorization API call, the delay is no longer necessary, removed.

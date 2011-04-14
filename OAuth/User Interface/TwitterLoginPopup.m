@@ -279,6 +279,7 @@
     
     [oAuthCallbackUrl release];
 	
+    [queue release];
 	[webView release];
 	[webViewController release];
 	[oAuth release];

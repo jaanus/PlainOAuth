@@ -15,6 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### August 28, 2011
+
+* Added unit tests for UTF-8 parameter keys and values.
+
 ### April 13, 2011
 
 * Fixed a memory leak.

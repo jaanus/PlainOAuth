@@ -45,12 +45,38 @@
 		EA23B42A11F9549900EE464B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA23B42911F9549900EE464B /* MobileCoreServices.framework */; };
 		EA25CABB12F61BF800C42D50 /* TwitterLoginCallbackFlow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA25CABA12F61BF800C42D50 /* TwitterLoginCallbackFlow.xib */; };
 		EA39520C1103DB2300D867AC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520B1103DB2300D867AC /* CFNetwork.framework */; };
-		EA39520E1103DB2B00D867AC /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520D1103DB2B00D867AC /* libz.1.2.3.dylib */; };
 		EA3952101103DB3200D867AC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520F1103DB3200D867AC /* SystemConfiguration.framework */; };
 		EA39B92112657CE100EA99DF /* signinHello@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA39B92012657CE100EA99DF /* signinHello@2x.png */; };
 		EA39B92512657DA700EA99DF /* signinBullet1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA39B92412657DA700EA99DF /* signinBullet1@2x.png */; };
 		EA39B92712657DAC00EA99DF /* signinBullet2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA39B92612657DAC00EA99DF /* signinBullet2@2x.png */; };
 		EA39B92A12657E1A00EA99DF /* signinButtonBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA39B92912657E1A00EA99DF /* signinButtonBg@2x.png */; };
+		EA85B10F140AD9B100F687B1 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA85B10E140AD9B100F687B1 /* libz.1.2.3.dylib */; };
+		EA85B114140ADAD800F687B1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520B1103DB2300D867AC /* CFNetwork.framework */; };
+		EA85B115140ADADD00F687B1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA23B42911F9549900EE464B /* MobileCoreServices.framework */; };
+		EA85B116140ADADF00F687B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3951F61103DB0A00D867AC /* Security.framework */; };
+		EA85B117140ADAF600F687B1 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA85B10E140AD9B100F687B1 /* libz.1.2.3.dylib */; };
+		EA85B118140ADBEF00F687B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3951F61103DB0A00D867AC /* Security.framework */; };
+		EA85B119140ADC0100F687B1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520F1103DB3200D867AC /* SystemConfiguration.framework */; };
+		EA85B11E140ADCA900F687B1 /* OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06C11D472A8006E5BEE /* OAuth.m */; };
+		EA85B11F140ADCDA00F687B1 /* OAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06111D472A8006E5BEE /* OAHMAC_SHA1SignatureProvider.m */; };
+		EA85B120140ADCDA00F687B1 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06311D472A8006E5BEE /* Base64Transcoder.c */; };
+		EA85B121140ADCDA00F687B1 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06511D472A8006E5BEE /* hmac.c */; };
+		EA85B122140ADCDA00F687B1 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06711D472A8006E5BEE /* sha1.c */; };
+		EA85B123140ADCDA00F687B1 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06A11D472A8006E5BEE /* NSString+URLEncoding.m */; };
+		EA85B125140ADD0600F687B1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EA23B41311F9535100EE464B /* Reachability.m */; };
+		EA85B126140ADD0600F687B1 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = EA23B3A211F9531200EE464B /* ASIAuthenticationDialog.m */; };
+		EA85B127140ADD0600F687B1 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA23B3A511F9531200EE464B /* ASIDownloadCache.m */; };
+		EA85B128140ADD0600F687B1 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA23B3A711F9531200EE464B /* ASIFormDataRequest.m */; };
+		EA85B129140ADD0600F687B1 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA23B3A911F9531200EE464B /* ASIHTTPRequest.m */; };
+		EA85B12A140ADD0600F687B1 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = EA23B3AD11F9531200EE464B /* ASIInputStream.m */; };
+		EA85B12B140ADD0600F687B1 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EA23B3AF11F9531200EE464B /* ASINetworkQueue.m */; };
+		EA94F339140AD7DC00EFAF02 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA94F338140AD7DC00EFAF02 /* SenTestingKit.framework */; };
+		EA94F33A140AD7DC00EFAF02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		EA94F33B140AD7DC00EFAF02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		EA94F33C140AD7DC00EFAF02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		EA94F342140AD7DC00EFAF02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA94F340140AD7DC00EFAF02 /* InfoPlist.strings */; };
+		EA94F344140AD7DC00EFAF02 /* PlainOAuthUnitTests.h in Resources */ = {isa = PBXBuildFile; fileRef = EA94F343140AD7DC00EFAF02 /* PlainOAuthUnitTests.h */; };
+		EA94F346140AD7DC00EFAF02 /* PlainOAuthUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA94F345140AD7DC00EFAF02 /* PlainOAuthUnitTests.m */; };
 		EACE237C11E047A20083EB38 /* UploadMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE237A11E047A20083EB38 /* UploadMedia.m */; };
 		EACE237D11E047A20083EB38 /* UploadMedia.xib in Resources */ = {isa = PBXBuildFile; fileRef = EACE237B11E047A20083EB38 /* UploadMedia.xib */; };
 		EACE238411E048620083EB38 /* CustomLoginPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE238011E048620083EB38 /* CustomLoginPopup.m */; };
@@ -134,12 +160,19 @@
 		EA25CABA12F61BF800C42D50 /* TwitterLoginCallbackFlow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwitterLoginCallbackFlow.xib; sourceTree = "<group>"; };
 		EA3951F61103DB0A00D867AC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EA39520B1103DB2300D867AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		EA39520D1103DB2B00D867AC /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		EA39520F1103DB3200D867AC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EA39B92012657CE100EA99DF /* signinHello@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinHello@2x.png"; sourceTree = "<group>"; };
 		EA39B92412657DA700EA99DF /* signinBullet1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinBullet1@2x.png"; sourceTree = "<group>"; };
 		EA39B92612657DAC00EA99DF /* signinBullet2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinBullet2@2x.png"; sourceTree = "<group>"; };
 		EA39B92912657E1A00EA99DF /* signinButtonBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinButtonBg@2x.png"; sourceTree = "<group>"; };
+		EA85B10E140AD9B100F687B1 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		EA94F337140AD7DC00EFAF02 /* PlainOAuthUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlainOAuthUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA94F338140AD7DC00EFAF02 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		EA94F33F140AD7DC00EFAF02 /* PlainOAuthUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlainOAuthUnitTests-Info.plist"; sourceTree = "<group>"; };
+		EA94F341140AD7DC00EFAF02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA94F343140AD7DC00EFAF02 /* PlainOAuthUnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlainOAuthUnitTests.h; sourceTree = "<group>"; };
+		EA94F345140AD7DC00EFAF02 /* PlainOAuthUnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlainOAuthUnitTests.m; sourceTree = "<group>"; };
+		EA94F347140AD7DC00EFAF02 /* PlainOAuthUnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlainOAuthUnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		EACE237911E047A20083EB38 /* UploadMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadMedia.h; path = Shared/UploadMedia.h; sourceTree = "<group>"; };
 		EACE237A11E047A20083EB38 /* UploadMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadMedia.m; path = Shared/UploadMedia.m; sourceTree = "<group>"; };
 		EACE237B11E047A20083EB38 /* UploadMedia.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = UploadMedia.xib; path = Shared/UploadMedia.xib; sourceTree = "<group>"; };
@@ -155,13 +188,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				EA39520C1103DB2300D867AC /* CFNetwork.framework in Frameworks */,
-				EA39520E1103DB2B00D867AC /* libz.1.2.3.dylib in Frameworks */,
-				EA3952101103DB3200D867AC /* SystemConfiguration.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				EA85B117140ADAF600F687B1 /* libz.1.2.3.dylib in Frameworks */,
 				EA23B42A11F9549900EE464B /* MobileCoreServices.framework in Frameworks */,
+				EA85B118140ADBEF00F687B1 /* Security.framework in Frameworks */,
+				EA3952101103DB3200D867AC /* SystemConfiguration.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA94F333140AD7DC00EFAF02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA85B114140ADAD800F687B1 /* CFNetwork.framework in Frameworks */,
+				EA94F33C140AD7DC00EFAF02 /* CoreGraphics.framework in Frameworks */,
+				EA94F33B140AD7DC00EFAF02 /* Foundation.framework in Frameworks */,
+				EA85B10F140AD9B100F687B1 /* libz.1.2.3.dylib in Frameworks */,
+				EA85B115140ADADD00F687B1 /* MobileCoreServices.framework in Frameworks */,
+				EA94F339140AD7DC00EFAF02 /* SenTestingKit.framework in Frameworks */,
+				EA85B116140ADADF00F687B1 /* Security.framework in Frameworks */,
+				EA85B119140ADC0100F687B1 /* SystemConfiguration.framework in Frameworks */,
+				EA94F33A140AD7DC00EFAF02 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* PlainOAuth.app */,
+				EA94F337140AD7DC00EFAF02 /* PlainOAuthUnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +235,7 @@
 				EA0EB02D11D472A8006E5BEE /* iPad */,
 				EA0EB03111D472A8006E5BEE /* iPhone */,
 				EA0EB03511D472A8006E5BEE /* OAuth */,
+				EA94F33D140AD7DC00EFAF02 /* PlainOAuthUnitTests */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -193,14 +245,15 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA39520B1103DB2300D867AC /* CFNetwork.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				EA85B10E140AD9B100F687B1 /* libz.1.2.3.dylib */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				EA23B42911F9549900EE464B /* MobileCoreServices.framework */,
 				EA3951F61103DB0A00D867AC /* Security.framework */,
-				EA39520B1103DB2300D867AC /* CFNetwork.framework */,
-				EA39520D1103DB2B00D867AC /* libz.1.2.3.dylib */,
+				EA94F338140AD7DC00EFAF02 /* SenTestingKit.framework */,
 				EA39520F1103DB3200D867AC /* SystemConfiguration.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -392,6 +445,26 @@
 			path = GHUnit;
 			sourceTree = "<group>";
 		};
+		EA94F33D140AD7DC00EFAF02 /* PlainOAuthUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA94F343140AD7DC00EFAF02 /* PlainOAuthUnitTests.h */,
+				EA94F345140AD7DC00EFAF02 /* PlainOAuthUnitTests.m */,
+				EA94F33E140AD7DC00EFAF02 /* Supporting Files */,
+			);
+			path = PlainOAuthUnitTests;
+			sourceTree = "<group>";
+		};
+		EA94F33E140AD7DC00EFAF02 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA94F33F140AD7DC00EFAF02 /* PlainOAuthUnitTests-Info.plist */,
+				EA94F340140AD7DC00EFAF02 /* InfoPlist.strings */,
+				EA94F347140AD7DC00EFAF02 /* PlainOAuthUnitTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -412,11 +485,32 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* PlainOAuth.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EA94F336140AD7DC00EFAF02 /* PlainOAuthUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA94F34A140AD7DC00EFAF02 /* Build configuration list for PBXNativeTarget "PlainOAuthUnitTests" */;
+			buildPhases = (
+				EA94F332140AD7DC00EFAF02 /* Sources */,
+				EA94F333140AD7DC00EFAF02 /* Frameworks */,
+				EA94F334140AD7DC00EFAF02 /* Resources */,
+				EA94F335140AD7DC00EFAF02 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlainOAuthUnitTests;
+			productName = PlainOAuthUnitTests;
+			productReference = EA94F337140AD7DC00EFAF02 /* PlainOAuthUnitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PlainOAuth" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -426,12 +520,14 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* PlainOAuth */,
+				EA94F336140AD7DC00EFAF02 /* PlainOAuthUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -459,7 +555,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA94F334140AD7DC00EFAF02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA94F342140AD7DC00EFAF02 /* InfoPlist.strings in Resources */,
+				EA94F344140AD7DC00EFAF02 /* PlainOAuthUnitTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EA94F335140AD7DC00EFAF02 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -496,7 +617,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA94F332140AD7DC00EFAF02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA85B11F140ADCDA00F687B1 /* OAHMAC_SHA1SignatureProvider.m in Sources */,
+				EA85B125140ADD0600F687B1 /* Reachability.m in Sources */,
+				EA85B126140ADD0600F687B1 /* ASIAuthenticationDialog.m in Sources */,
+				EA85B127140ADD0600F687B1 /* ASIDownloadCache.m in Sources */,
+				EA85B128140ADD0600F687B1 /* ASIFormDataRequest.m in Sources */,
+				EA85B129140ADD0600F687B1 /* ASIHTTPRequest.m in Sources */,
+				EA85B12A140ADD0600F687B1 /* ASIInputStream.m in Sources */,
+				EA85B12B140ADD0600F687B1 /* ASINetworkQueue.m in Sources */,
+				EA85B120140ADCDA00F687B1 /* Base64Transcoder.c in Sources */,
+				EA85B121140ADCDA00F687B1 /* hmac.c in Sources */,
+				EA85B122140ADCDA00F687B1 /* sha1.c in Sources */,
+				EA85B123140ADCDA00F687B1 /* NSString+URLEncoding.m in Sources */,
+				EA85B11E140ADCA900F687B1 /* OAuth.m in Sources */,
+				EA94F346140AD7DC00EFAF02 /* PlainOAuthUnitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EA94F340140AD7DC00EFAF02 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA94F341140AD7DC00EFAF02 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -509,6 +662,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PlainOAuth_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "PlainOAuth-Info.plist";
 				PRODUCT_NAME = PlainOAuth;
 				SDKROOT = iphoneos;
@@ -524,6 +678,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PlainOAuth_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "PlainOAuth-Info.plist";
 				PRODUCT_NAME = PlainOAuth;
 				SDKROOT = iphoneos;
@@ -540,7 +695,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
@@ -555,9 +709,56 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv6 armv7 i386";
+			};
+			name = Release;
+		};
+		EA94F348140AD7DC00EFAF02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlainOAuthUnitTests/PlainOAuthUnitTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				INFOPLIST_FILE = "PlainOAuthUnitTests/PlainOAuthUnitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		EA94F349140AD7DC00EFAF02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlainOAuthUnitTests/PlainOAuthUnitTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				INFOPLIST_FILE = "PlainOAuthUnitTests/PlainOAuthUnitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -578,6 +779,15 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA94F34A140AD7DC00EFAF02 /* Build configuration list for PBXNativeTarget "PlainOAuthUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA94F348140AD7DC00EFAF02 /* Debug */,
+				EA94F349140AD7DC00EFAF02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -12,6 +12,19 @@
 #import "ASIFormDataRequest.h"
 #import "OAuthTwitterCallbacks.h"
 
+@interface OAuth (PrivateMethods)
+
+// Internal methods, no need to call these directly from outside.
+- (NSString *) oAuthHeaderForMethod:(NSString *)method andUrl:(NSString *)url andParams:(NSDictionary *)params
+					 andTokenSecret:(NSString *)token_secret;
+- (NSString *) oauth_signature_base:(NSString *)httpMethod withUrl:(NSString *)url andParams:(NSDictionary *)params;
+- (NSString *) oauth_authorization_header:(NSString *)oauth_signature withParams:(NSDictionary *)params;
+- (NSString *) sha1:(NSString *)str;
+- (NSArray *) oauth_base_components;
+
+@end
+
+
 @implementation OAuth
 
 @synthesize oauth_token;

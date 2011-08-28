@@ -109,11 +109,11 @@
 
 	OAHMAC_SHA1SignatureProvider *sigProvider = [[OAHMAC_SHA1SignatureProvider alloc] init];
 	
-	// If there were any params, URLencode them.
+	// If there were any params, URLencode them. Also URLencode their keys.
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithCapacity:[params count]];
 	if (params) {
 		for (NSString *key in [params allKeys]) {
-			[_params setObject:[[params objectForKey:key] encodedURLParameterString] forKey:key];
+			[_params setObject:[[params objectForKey:key] encodedURLParameterString] forKey: [key encodedURLParameterString]];
 		}
 	}
     

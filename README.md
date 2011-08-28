@@ -18,6 +18,7 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 ### August 28, 2011
 
 * Added unit tests for UTF-8 parameter keys and values.
+* Added UTF-8 encoding of parameter keys (thanks, @h-lame).
 
 ### April 13, 2011
 

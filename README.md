@@ -15,6 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### November 12, 2011
+
+* Upgraded linked libz version to compile with latest Xcode/iOS SDK (5.0).
+
 ### August 28, 2011
 
 * Moved some private method signature definitions from OAuth.h to OAuth.m into a private category.

@@ -50,11 +50,9 @@
 		EA39B92512657DA700EA99DF /* signinBullet1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA39B92412657DA700EA99DF /* signinBullet1@2x.png */; };
 		EA39B92712657DAC00EA99DF /* signinBullet2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA39B92612657DAC00EA99DF /* signinBullet2@2x.png */; };
 		EA39B92A12657E1A00EA99DF /* signinButtonBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA39B92912657E1A00EA99DF /* signinButtonBg@2x.png */; };
-		EA85B10F140AD9B100F687B1 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA85B10E140AD9B100F687B1 /* libz.1.2.3.dylib */; };
 		EA85B114140ADAD800F687B1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520B1103DB2300D867AC /* CFNetwork.framework */; };
 		EA85B115140ADADD00F687B1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA23B42911F9549900EE464B /* MobileCoreServices.framework */; };
 		EA85B116140ADADF00F687B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3951F61103DB0A00D867AC /* Security.framework */; };
-		EA85B117140ADAF600F687B1 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA85B10E140AD9B100F687B1 /* libz.1.2.3.dylib */; };
 		EA85B118140ADBEF00F687B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3951F61103DB0A00D867AC /* Security.framework */; };
 		EA85B119140ADC0100F687B1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39520F1103DB3200D867AC /* SystemConfiguration.framework */; };
 		EA85B11E140ADCA900F687B1 /* OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06C11D472A8006E5BEE /* OAuth.m */; };
@@ -77,6 +75,8 @@
 		EA94F342140AD7DC00EFAF02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA94F340140AD7DC00EFAF02 /* InfoPlist.strings */; };
 		EA94F344140AD7DC00EFAF02 /* PlainOAuthUnitTests.h in Resources */ = {isa = PBXBuildFile; fileRef = EA94F343140AD7DC00EFAF02 /* PlainOAuthUnitTests.h */; };
 		EA94F346140AD7DC00EFAF02 /* PlainOAuthUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA94F345140AD7DC00EFAF02 /* PlainOAuthUnitTests.m */; };
+		EAC23582146F8B8400B9629F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC23581146F8B8400B9629F /* libz.dylib */; };
+		EAC23583146F8BAA00B9629F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC23581146F8B8400B9629F /* libz.dylib */; };
 		EACE237C11E047A20083EB38 /* UploadMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE237A11E047A20083EB38 /* UploadMedia.m */; };
 		EACE237D11E047A20083EB38 /* UploadMedia.xib in Resources */ = {isa = PBXBuildFile; fileRef = EACE237B11E047A20083EB38 /* UploadMedia.xib */; };
 		EACE238411E048620083EB38 /* CustomLoginPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE238011E048620083EB38 /* CustomLoginPopup.m */; };
@@ -165,7 +165,6 @@
 		EA39B92412657DA700EA99DF /* signinBullet1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinBullet1@2x.png"; sourceTree = "<group>"; };
 		EA39B92612657DAC00EA99DF /* signinBullet2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinBullet2@2x.png"; sourceTree = "<group>"; };
 		EA39B92912657E1A00EA99DF /* signinButtonBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinButtonBg@2x.png"; sourceTree = "<group>"; };
-		EA85B10E140AD9B100F687B1 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		EA94F337140AD7DC00EFAF02 /* PlainOAuthUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlainOAuthUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA94F338140AD7DC00EFAF02 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		EA94F33F140AD7DC00EFAF02 /* PlainOAuthUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlainOAuthUnitTests-Info.plist"; sourceTree = "<group>"; };
@@ -173,6 +172,7 @@
 		EA94F343140AD7DC00EFAF02 /* PlainOAuthUnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlainOAuthUnitTests.h; sourceTree = "<group>"; };
 		EA94F345140AD7DC00EFAF02 /* PlainOAuthUnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlainOAuthUnitTests.m; sourceTree = "<group>"; };
 		EA94F347140AD7DC00EFAF02 /* PlainOAuthUnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlainOAuthUnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		EAC23581146F8B8400B9629F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		EACE237911E047A20083EB38 /* UploadMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadMedia.h; path = Shared/UploadMedia.h; sourceTree = "<group>"; };
 		EACE237A11E047A20083EB38 /* UploadMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadMedia.m; path = Shared/UploadMedia.m; sourceTree = "<group>"; };
 		EACE237B11E047A20083EB38 /* UploadMedia.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = UploadMedia.xib; path = Shared/UploadMedia.xib; sourceTree = "<group>"; };
@@ -188,10 +188,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAC23583146F8BAA00B9629F /* libz.dylib in Frameworks */,
 				EA39520C1103DB2300D867AC /* CFNetwork.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				EA85B117140ADAF600F687B1 /* libz.1.2.3.dylib in Frameworks */,
 				EA23B42A11F9549900EE464B /* MobileCoreServices.framework in Frameworks */,
 				EA85B118140ADBEF00F687B1 /* Security.framework in Frameworks */,
 				EA3952101103DB3200D867AC /* SystemConfiguration.framework in Frameworks */,
@@ -203,10 +203,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAC23582146F8B8400B9629F /* libz.dylib in Frameworks */,
 				EA85B114140ADAD800F687B1 /* CFNetwork.framework in Frameworks */,
 				EA94F33C140AD7DC00EFAF02 /* CoreGraphics.framework in Frameworks */,
 				EA94F33B140AD7DC00EFAF02 /* Foundation.framework in Frameworks */,
-				EA85B10F140AD9B100F687B1 /* libz.1.2.3.dylib in Frameworks */,
 				EA85B115140ADADD00F687B1 /* MobileCoreServices.framework in Frameworks */,
 				EA94F339140AD7DC00EFAF02 /* SenTestingKit.framework in Frameworks */,
 				EA85B116140ADADF00F687B1 /* Security.framework in Frameworks */,
@@ -230,6 +230,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				EAC23581146F8B8400B9629F /* libz.dylib */,
 				EA0EB07611D472A8006E5BEE /* Other Sources */,
 				EA0EB06F11D472A8006E5BEE /* Shared */,
 				EA0EB02D11D472A8006E5BEE /* iPad */,
@@ -247,7 +248,6 @@
 			children = (
 				EA39520B1103DB2300D867AC /* CFNetwork.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
-				EA85B10E140AD9B100F687B1 /* libz.1.2.3.dylib */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				EA23B42911F9549900EE464B /* MobileCoreServices.framework */,
 				EA3951F61103DB0A00D867AC /* Security.framework */,

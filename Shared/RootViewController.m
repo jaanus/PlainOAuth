@@ -13,7 +13,7 @@
 #import "CustomLoginPopup.h"
 #import "TwitterLoginPopup.h"
 #import "JSON.h"
-#import "ASIFormDataRequest.h"
+#import "NSString+URLEncoding.h"
 
 @interface RootViewController (PrivateMethods)
 
@@ -152,35 +152,38 @@
     
     NSString *postUrl = @"https://api.twitter.com/1/statuses/update.json";
     
-    ASIFormDataRequest *request = [[ASIFormDataRequest alloc]
-                                   initWithURL:[NSURL URLWithString:postUrl]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:postUrl]];
     
     NSMutableDictionary *postInfo = [NSMutableDictionary
                                      dictionaryWithObject:statusText.text
                                      forKey:@"status"];
     
+    NSString *postBodyString = [NSString stringWithFormat:@"status=%@", [statusText.text encodedURLParameterString]];
+    
     if (includeLocation.on) {        
         // Hardcoded to Cupertino, CA for testing, same coordinates as in Apple/Twitter examples.
         [postInfo setObject:@"37.33182" forKey:@"lat"];
         [postInfo setObject:@"-122.03118" forKey:@"long"];
+        postBodyString = [NSString stringWithFormat:@"%@&lat=%@&long=%@", postBodyString, [postInfo valueForKey:@"lat"], [postInfo valueForKey:@"long"]];
     }
+
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[postBodyString dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setValue:[oAuth oAuthHeaderForMethod:@"POST"
+                                           andUrl:postUrl
+                                        andParams:postInfo] forHTTPHeaderField:@"Authorization"];
     
-    for (NSString *key in [postInfo allKeys]) {
-        [request setPostValue:[postInfo objectForKey:key] forKey:key];
+    NSHTTPURLResponse *response;
+    NSError *error = nil;
+    
+    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    if (error) {
+        NSLog(@"Error from NSURLConnection: %@", error);
     }
-    
-    [request addRequestHeader:@"Authorization"
-                        value:[oAuth oAuthHeaderForMethod:@"POST"
-                                                   andUrl:postUrl
-                                                andParams:postInfo]];
-    
-    [request startSynchronous];
-    
-    NSLog(@"Status posted. HTTP result code: %d", request.responseStatusCode);
-    
+    NSLog(@"Status posted. HTTP result code: %d", [response statusCode]);
+        
     statusText.text = @"";
-    
-    [request release];
     
     [statusText resignFirstResponder];
 }
@@ -196,25 +199,27 @@
     NSString *oAuthValue = [oAuth oAuthHeaderForMethod:@"GET" andUrl:getUrl andParams:params];
     
     // ... but the actual request URL contains normal GET parameters.
-    ASIHTTPRequest *request = [[ASIHTTPRequest alloc]
-                               initWithURL:[NSURL URLWithString:[NSString
-                                                                 stringWithFormat:@"%@?count=%@",
-                                                                 getUrl,
-                                                                 [params valueForKey:@"count"]]]];
-    [request addRequestHeader:@"Authorization" value:oAuthValue];
-    [request startSynchronous];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString
+                                                                                             stringWithFormat:@"%@?count=%@",
+                                                                                             getUrl,
+                                                                                             [params valueForKey:@"count"]]]];
     
-    NSLog(@"Got statuses. HTTP result code: %d", request.responseStatusCode);
+    [request addValue:oAuthValue forHTTPHeaderField:@"Authorization"];
+    
+    NSHTTPURLResponse *response;
+    NSError *error = nil;
+    
+    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];
+    
+    NSLog(@"Got statuses. HTTP result code: %d", [response statusCode]);
     
     tweets.text = @"";
     
-    NSArray *gotTweets = [[request responseString] JSONValue];
+    NSArray *gotTweets = [responseString JSONValue];
     
     for (NSDictionary *tweet in gotTweets) {
         tweets.text = [NSString stringWithFormat:@"%@%@\n", tweets.text, [tweet valueForKey:@"text"]];
     } 
-    
-    [request release];
     
     [statusText resignFirstResponder];
 }

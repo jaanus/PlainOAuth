@@ -15,9 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
-### November 12, 2011
+### November 13, 2011
 
 * Upgraded linked libz version to compile with latest Xcode/iOS SDK (5.0).
+* Removed ASIHTTPRequest dependencies, now using NSURL* throughout the app.
 
 ### August 28, 2011
 

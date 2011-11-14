@@ -206,7 +206,7 @@
     NSHTTPURLResponse *response;
     NSError *error = nil;
     
-    NSString *responseString = [[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding];    
+    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];    
 	
 	if ([response statusCode] != 200) {
 		if ([self.delegate respondsToSelector:@selector(requestTwitterTokenDidFail:)]) {
@@ -255,7 +255,7 @@
     NSHTTPURLResponse *response;
     NSError *error = nil;
     
-    NSString *responseString = [[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding];    
+    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];    
 	
 	if ([response statusCode] != 200) {
         

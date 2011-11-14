@@ -8,9 +8,9 @@
 
 #import "UploadMedia.h"
 #import "OAuth.h"
-#import "ASIFormDataRequest.h"
 #import "JSON.h"
 #import "OAuthConsumerCredentials.h"
+#import "NSString+URLEncoding.h"
 
 @implementation UploadMedia
 
@@ -32,8 +32,6 @@
     [super viewDidLoad];
     
     self.title = @"Upload media demo";
-    
-    
 }
 
 
@@ -92,49 +90,122 @@
 
 -(IBAction)didPressPostImage:(id)sender {
     
-    ASIFormDataRequest *req = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.twitpic.com/2/upload.json"]];
+    NSString *url = @"http://api.twitpic.com/2/upload.json";
     
-    [req addRequestHeader:@"X-Auth-Service-Provider" value:@"https://api.twitter.com/1/account/verify_credentials.json"];
-    [req addRequestHeader:@"X-Verify-Credentials-Authorization"
-                    value:[oAuth oAuthHeaderForMethod:@"GET"
-                                               andUrl:@"https://api.twitter.com/1/account/verify_credentials.json"
-                                            andParams:nil]];    
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
-    [req setData:UIImageJPEGRepresentation(imageView.image, 0.8) forKey:@"media"];
+    [req setValue:@"https://api.twitter.com/1/account/verify_credentials.json" forHTTPHeaderField:@"X-Auth-Service-Provider"];
+    [req setValue:[oAuth oAuthHeaderForMethod:@"GET"
+                                       andUrl:@"https://api.twitter.com/1/account/verify_credentials.json"
+                                    andParams:nil] forHTTPHeaderField:@"X-Verify-Credentials-Authorization"];      
     
-    // Define this somewhere or replace with your own key inline right here.
-    [req setPostValue:TWITPIC_API_KEY forKey:@"key"];
+    NSData *imageData = UIImageJPEGRepresentation(imageView.image, 0.8);
+    
+    [req setHTTPMethod:@"POST"];
+
+    // Image uploading and form construction technique with NSURLRequest: http://www.cocoanetics.com/2010/02/uploading-uiimages-to-twitpic/
+    
+    // Just some random text that will never occur in the body
+    NSString *stringBoundary = @"0xKhTmLbOuNdArY---This_Is_ThE_BoUnDaRyy---pqo";
+    
+    // Header value
+    NSString *headerBoundary = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",
+                                stringBoundary];
+    
+    // Set header
+    [req addValue:headerBoundary forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *postBody = [NSMutableData data];
+    
+    // Twitpic API key
+    [postBody appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"key\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    // Define this TWITPIC_API_KEY somewhere or replace with your own key inline right here.
+    [postBody appendData:[TWITPIC_API_KEY dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
     // TwitPic API doc says that message is mandatory, but looks like
     // it's actually optional in practice as of July 2010. You may or may not send it, both work.
-    // [req setPostValue:@"hmm what" forKey:@"message"];
+    /* [postBody appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"message\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"oh hai!!!" dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]]; */
     
-    [req startSynchronous];
+    // media part
+    [postBody appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Disposition: form-data; name=\"media\"; filename=\"dummy.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Type: image/jpeg\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Transfer-Encoding: binary\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSLog(@"Got HTTP status code from TwitPic: %d", [req responseStatusCode]);
-    NSLog(@"Response string: %@", [req responseString]);
-    NSDictionary *twitpicResponse = [[req responseString] JSONValue];
+    // add it to body
+    [postBody appendData:imageData];
+    [postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // final boundary
+    [postBody appendData:[[NSString stringWithFormat:@"--%@--\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [req setHTTPBody:postBody];
+        
+    NSHTTPURLResponse *response;
+    NSError *error = nil;
+    
+    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];
+    
+    if (error) {
+        NSLog(@"Error from NSURLConnection: %@", error);        
+    }    
+    NSLog(@"Got HTTP status code from TwitPic: %d", [response statusCode]);
+    NSLog(@"Response string: %@", responseString);
+    NSDictionary *twitpicResponse = [responseString JSONValue];
     textView.text = [NSString stringWithFormat:@"Posted image URL: %@", [twitpicResponse valueForKey:@"url"]];
-    [req release];
     
 }
 
 // Twitter profile image post example.
-// This returns a 200 response but does not seem to actually work, maybe due to a bug on Twitter side.
-// See http://groups.google.com/group/twitter-development-talk/browse_thread/thread/df7102654c3077be/163abfbdcd24b8bf for updates.
 -(IBAction)didPressPostProfileImage:(id)sender {
     NSString *postUrl = @"http://api.twitter.com/1/account/update_profile_image.json";
-    ASIFormDataRequest *req = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:postUrl]];
-    [req addRequestHeader:@"Authorization" value:[oAuth oAuthHeaderForMethod:@"POST" andUrl:postUrl andParams:nil]];
     
-    [req setData:UIImageJPEGRepresentation(imageView.image, 0.8)
-    withFileName:@"myProfileImage.jpg"
-  andContentType:@"image/jpeg" forKey:@"image"];    
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:postUrl]];
+    [req setValue:[oAuth oAuthHeaderForMethod:@"POST" andUrl:postUrl andParams:nil] forHTTPHeaderField:@"Authorization"];
+    [req setHTTPMethod:@"POST"];
     
-    [req startSynchronous];
-    NSLog(@"Got HTTP status code from Twitter after posting profile image: %d", [req responseStatusCode]);
-    NSLog(@"Response string: %@", [req responseString]);
-    [req release];
+    // Just some random text that will never occur in the body
+    NSString *stringBoundary = @"0xKhTmLbOuNdArY---This_Is_ThE_BoUnDaRyy---pqo";
+    
+    // Header value
+    NSString *headerBoundary = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",
+                                stringBoundary];
+    
+    // Set header
+    [req addValue:headerBoundary forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *postBody = [NSMutableData data];
+    
+    // media part
+    [postBody appendData:[[NSString stringWithFormat:@"--%@\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Disposition: form-data; name=\"image\"; filename=\"myProfileImage.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Type: image/jpeg\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Transfer-Encoding: binary\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // add it to body
+    [postBody appendData:UIImageJPEGRepresentation(imageView.image, 0.8)];
+    [postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // final boundary
+    [postBody appendData:[[NSString stringWithFormat:@"--%@--\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [req setHTTPBody:postBody];
+
+    NSHTTPURLResponse *response;
+    NSError *error = nil;
+    
+    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];
+    
+    if (error) {
+        NSLog(@"Error from NSURLConnection: %@", error);        
+    }
+    NSLog(@"Got HTTP status code from Twitter after posting profile image: %d", [response statusCode]);
+    NSLog(@"Response string: %@", responseString);
 }
 
 #pragma mark -

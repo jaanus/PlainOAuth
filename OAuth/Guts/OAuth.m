@@ -9,7 +9,6 @@
 #include <CommonCrypto/CommonDigest.h>
 #import "OAHMAC_SHA1SignatureProvider.h"
 #import "NSString+URLEncoding.h"
-#import "ASIFormDataRequest.h"
 #import "OAuthTwitterCallbacks.h"
 
 @interface OAuth (PrivateMethods)
@@ -23,7 +22,6 @@
 - (NSArray *) oauth_base_components;
 
 @end
-
 
 @implementation OAuth
 
@@ -201,17 +199,21 @@
 	NSString *oauth_header = [self oAuthHeaderForMethod:@"POST" andUrl:url andParams:params];
 	
 	// Synchronously perform the HTTP request.
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-	request.requestMethod = @"POST";
-	[request addRequestHeader:@"Authorization" value:oauth_header];
-	[request startSynchronous];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10.0f]; 
+	[request setHTTPMethod:@"POST"];
+    [request addValue:oauth_header forHTTPHeaderField:@"Authorization"];
+
+    NSHTTPURLResponse *response;
+    NSError *error = nil;
+    
+    NSString *responseString = [[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding];    
 	
-	if ([request error]) {
+	if ([response statusCode] != 200) {
 		if ([self.delegate respondsToSelector:@selector(requestTwitterTokenDidFail:)]) {
 			[delegate requestTwitterTokenDidFail:self];
 		}
 	} else {
-		NSArray *responseBodyComponents = [[request responseString] componentsSeparatedByString:@"&"];
+		NSArray *responseBodyComponents = [responseString componentsSeparatedByString:@"&"];
 		// For a successful response, break the response down into pieces and set the properties
 		// with KVC. If there's a response for which there is no local property or ivar, this
 		// may end up with setValue:forUndefinedKey:.
@@ -222,7 +224,7 @@
 		if ([self.delegate respondsToSelector:@selector(requestTwitterTokenDidSucceed:)]) {
 			[delegate requestTwitterTokenDidSucceed:self];
 		}
-	} 
+	}
 }
 
 
@@ -246,21 +248,25 @@
 	
 	NSString *oauth_header = [self oAuthHeaderForMethod:@"POST" andUrl:url andParams:params andTokenSecret:oauth_token_secret];
 
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-	request.requestMethod = @"POST";
-	[request addRequestHeader:@"Authorization" value:oauth_header];
-	[request startSynchronous];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10.0f]; 
+	[request setHTTPMethod:@"POST"];
+    [request addValue:oauth_header forHTTPHeaderField:@"Authorization"];
+    
+    NSHTTPURLResponse *response;
+    NSError *error = nil;
+    
+    NSString *responseString = [[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding];    
 	
-	if ([request error]) {
+	if ([response statusCode] != 200) {
         
-        NSLog(@"HTTP return code for token authorization error: %d, message: %@, string: %@", request.responseStatusCode, request.responseStatusMessage, request.responseString);
+        NSLog(@"HTTP return code for token authorization error: %d, message: %@, string: %@", [response statusCode], [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]], responseString);
         NSLog(@"OAuth header was: %@", oauth_header);
         
 		if ([self.delegate respondsToSelector:@selector(authorizeTwitterTokenDidFail:)]) {
 			[delegate authorizeTwitterTokenDidFail:self];
 		}
 	} else {
-		NSArray *responseBodyComponents = [[request responseString] componentsSeparatedByString:@"&"];
+		NSArray *responseBodyComponents = [responseString componentsSeparatedByString:@"&"];
 		for (NSString *component in responseBodyComponents) {
 			// Twitter as of January 2010 returns oauth_token, oauth_token_secret, user_id and screen_name.
 			// We support all these.
@@ -285,11 +291,16 @@
 	
 	NSString *oauth_header = [self oAuthHeaderForMethod:@"GET" andUrl:url andParams:nil];
 	
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-	request.requestMethod = @"GET";
-	[request addRequestHeader:@"Authorization" value:oauth_header];
-	[request startSynchronous];
-	if ([request error]) {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10.0f]; 
+	[request setHTTPMethod:@"GET"];
+    [request addValue:oauth_header forHTTPHeaderField:@"Authorization"];
+    
+    NSHTTPURLResponse *response;
+    NSError *error = nil;
+    
+    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];    
+    
+	if ([response statusCode] != 200) {
 		return NO;
 	} else {
 		return YES;

@@ -230,7 +230,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				EAC23581146F8B8400B9629F /* libz.dylib */,
 				EA0EB07611D472A8006E5BEE /* Other Sources */,
 				EA0EB06F11D472A8006E5BEE /* Shared */,
 				EA0EB02D11D472A8006E5BEE /* iPad */,
@@ -246,6 +245,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAC23581146F8B8400B9629F /* libz.dylib */,
 				EA39520B1103DB2300D867AC /* CFNetwork.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,

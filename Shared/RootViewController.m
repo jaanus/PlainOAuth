@@ -7,8 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "OAuth.h"
-#import "OAuth+UserDefaults.h"
+#import "OAuthTwitter.h"
 #import "OAuthConsumerCredentials.h"
 #import "CustomLoginPopup.h"
 #import "TwitterLoginPopup.h"
@@ -44,8 +43,8 @@
 
 	self.title = @"Hello OAuth-Twitter";
 
-	oAuth = [[OAuth alloc] initWithConsumerKey:OAUTH_CONSUMER_KEY andConsumerSecret:OAUTH_CONSUMER_SECRET];
-	[oAuth loadOAuthTwitterContextFromUserDefaults];
+	oAuth = [[OAuthTwitter alloc] initWithConsumerKey:OAUTH_CONSUMER_KEY andConsumerSecret:OAUTH_CONSUMER_SECRET];
+	[oAuth load];
 	    
     [self resetUi];
     [tweets setFont:[UIFont systemFontOfSize:12]];
@@ -141,7 +140,7 @@
 
 - (void)logout {
     [oAuth forget];
-    [oAuth saveOAuthTwitterContextToUserDefaults];
+    [oAuth save];
     [self resetUi];
 }
 
@@ -243,7 +242,7 @@
 - (void)twitterLoginPopupDidAuthorize:(TwitterLoginPopup *)popup {
     [self dismissModalViewControllerAnimated:YES];        
     [loginPopup release]; loginPopup = nil; // was retained as ivar in "login"
-    [oAuth saveOAuthTwitterContextToUserDefaults];
+    [oAuth save];
     [self resetUi];
 }
 

@@ -11,7 +11,7 @@
 #import "TwitterLoginUiFeedback.h"
 #import "UploadMedia.h"
 
-@class OAuth, CustomLoginPopup;
+@class OAuthTwitter, CustomLoginPopup;
 
 @interface RootViewController : UIViewController <TwitterLoginPopupDelegate, TwitterLoginUiFeedback, UIActionSheetDelegate> {
     IBOutlet UIButton *postButton, *latestTweetsButton, *uploadMediaButton;
@@ -22,7 +22,7 @@
         
     CustomLoginPopup *loginPopup;
 	
-	OAuth *oAuth;
+	OAuthTwitter *oAuth;
 	
 }
 - (IBAction)didPressPost:(id)sender;

@@ -29,11 +29,12 @@
 		// determine semantics with oauth_token_authorized and call synchronousVerifyCredentials
 		// if you want to be really sure.
 		*oauth_token,
-		*oauth_token_secret,	
+		*oauth_token_secret,
+    
+        // What prefix to use for the keys when saving and loading to/from NSUserDefaults.
+        // Useful to avoid key naming conflicts.
+        *save_prefix;
 		
-		// From Twitter. May or may not be applicable to other providers.
-		*user_id,
-		*screen_name;
 	
 	// YES if this token has been authorized and can be used for production calls.
 	// You need to save and load the state of this yourself, but you don't need to
@@ -49,22 +50,26 @@
 // This is really the only critical oAuth method you need.
 - (NSString *) oAuthHeaderForMethod:(NSString *)method andUrl:(NSString *)url andParams:(NSDictionary *)params;	
 
+// Child classes need this method during initial authorization phase. No need to call during real-life use.
+- (NSString *) oAuthHeaderForMethod:(NSString *)method andUrl:(NSString *)url andParams:(NSDictionary *)params
+					 andTokenSecret:(NSString *)token_secret;
+
 // If you detect a login state inconsistency in your app, use this to reset the context back to default,
 // not-logged-in state.
 - (void) forget;
 
-// Twitter convenience methods
-- (void) synchronousRequestTwitterToken;
-- (void) synchronousRequestTwitterTokenWithCallbackUrl:(NSString *)callbackUrl;
-- (void) synchronousAuthorizeTwitterTokenWithVerifier:(NSString *)oauth_verifier;
-- (BOOL) synchronousVerifyTwitterCredentials;
+// Load and save context from/to NSUserDefaults. Child classes should override these, call the parent method
+// and also do the load/save of their own custom parameters using the same save prefix.
+- (void) load;
+- (void) save;
+
+
 
 @property (assign) id<OAuthTwitterCallbacks> delegate;
 @property (assign) BOOL oauth_token_authorized;
 @property (copy) NSString *oauth_token;
 @property (copy) NSString *oauth_token_secret;
-@property (copy) NSString *user_id;
-@property (copy) NSString *screen_name;
+@property (copy) NSString *save_prefix;
 
 @end
 

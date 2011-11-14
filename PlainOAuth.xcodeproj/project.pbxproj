@@ -28,7 +28,6 @@
 		EA0EB09E11D472A8006E5BEE /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06711D472A8006E5BEE /* sha1.c */; };
 		EA0EB09F11D472A8006E5BEE /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06A11D472A8006E5BEE /* NSString+URLEncoding.m */; };
 		EA0EB0A011D472A8006E5BEE /* OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06C11D472A8006E5BEE /* OAuth.m */; };
-		EA0EB0A111D472A8006E5BEE /* OAuth+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06E11D472A8006E5BEE /* OAuth+UserDefaults.m */; };
 		EA0EB0A611D472A8006E5BEE /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB07A11D472A8006E5BEE /* NSObject+SBJSON.m */; };
 		EA0EB0A711D472A8006E5BEE /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB07C11D472A8006E5BEE /* NSString+SBJSON.m */; };
 		EA0EB0A811D472A8006E5BEE /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB07E11D472A8006E5BEE /* SBJsonBase.m */; };
@@ -59,6 +58,7 @@
 		EA94F342140AD7DC00EFAF02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA94F340140AD7DC00EFAF02 /* InfoPlist.strings */; };
 		EA94F344140AD7DC00EFAF02 /* PlainOAuthUnitTests.h in Resources */ = {isa = PBXBuildFile; fileRef = EA94F343140AD7DC00EFAF02 /* PlainOAuthUnitTests.h */; };
 		EA94F346140AD7DC00EFAF02 /* PlainOAuthUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA94F345140AD7DC00EFAF02 /* PlainOAuthUnitTests.m */; };
+		EAA077071470C70C00B03C87 /* OAuthTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA077061470C70C00B03C87 /* OAuthTwitter.m */; };
 		EAC23582146F8B8400B9629F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC23581146F8B8400B9629F /* libz.dylib */; };
 		EAC23583146F8BAA00B9629F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC23581146F8B8400B9629F /* libz.dylib */; };
 		EACE237C11E047A20083EB38 /* UploadMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE237A11E047A20083EB38 /* UploadMedia.m */; };
@@ -106,8 +106,6 @@
 		EA0EB06A11D472A8006E5BEE /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		EA0EB06B11D472A8006E5BEE /* OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuth.h; sourceTree = "<group>"; };
 		EA0EB06C11D472A8006E5BEE /* OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth.m; sourceTree = "<group>"; };
-		EA0EB06D11D472A8006E5BEE /* OAuth+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAuth+UserDefaults.h"; sourceTree = "<group>"; };
-		EA0EB06E11D472A8006E5BEE /* OAuth+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAuth+UserDefaults.m"; sourceTree = "<group>"; };
 		EA0EB07511D472A8006E5BEE /* PlainOAuth-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PlainOAuth-Info.plist"; sourceTree = "<group>"; };
 		EA0EB07811D472A8006E5BEE /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		EA0EB07911D472A8006E5BEE /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
@@ -137,6 +135,8 @@
 		EA94F343140AD7DC00EFAF02 /* PlainOAuthUnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlainOAuthUnitTests.h; sourceTree = "<group>"; };
 		EA94F345140AD7DC00EFAF02 /* PlainOAuthUnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlainOAuthUnitTests.m; sourceTree = "<group>"; };
 		EA94F347140AD7DC00EFAF02 /* PlainOAuthUnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlainOAuthUnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		EAA077051470C70C00B03C87 /* OAuthTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthTwitter.h; sourceTree = "<group>"; };
+		EAA077061470C70C00B03C87 /* OAuthTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthTwitter.m; sourceTree = "<group>"; };
 		EAC23581146F8B8400B9629F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		EACE237911E047A20083EB38 /* UploadMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadMedia.h; path = Shared/UploadMedia.h; sourceTree = "<group>"; };
 		EACE237A11E047A20083EB38 /* UploadMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadMedia.m; path = Shared/UploadMedia.m; sourceTree = "<group>"; };
@@ -299,8 +299,8 @@
 				EA0EB06A11D472A8006E5BEE /* NSString+URLEncoding.m */,
 				EA0EB06B11D472A8006E5BEE /* OAuth.h */,
 				EA0EB06C11D472A8006E5BEE /* OAuth.m */,
-				EA0EB06D11D472A8006E5BEE /* OAuth+UserDefaults.h */,
-				EA0EB06E11D472A8006E5BEE /* OAuth+UserDefaults.m */,
+				EAA077051470C70C00B03C87 /* OAuthTwitter.h */,
+				EAA077061470C70C00B03C87 /* OAuthTwitter.m */,
 			);
 			path = Guts;
 			sourceTree = "<group>";
@@ -517,7 +517,6 @@
 				EA0EB09E11D472A8006E5BEE /* sha1.c in Sources */,
 				EA0EB09F11D472A8006E5BEE /* NSString+URLEncoding.m in Sources */,
 				EA0EB0A011D472A8006E5BEE /* OAuth.m in Sources */,
-				EA0EB0A111D472A8006E5BEE /* OAuth+UserDefaults.m in Sources */,
 				EA0EB0A611D472A8006E5BEE /* NSObject+SBJSON.m in Sources */,
 				EA0EB0A711D472A8006E5BEE /* NSString+SBJSON.m in Sources */,
 				EA0EB0A811D472A8006E5BEE /* SBJsonBase.m in Sources */,
@@ -527,6 +526,7 @@
 				EACE237C11E047A20083EB38 /* UploadMedia.m in Sources */,
 				EACE238411E048620083EB38 /* CustomLoginPopup.m in Sources */,
 				EACE238511E048620083EB38 /* RootViewController.m in Sources */,
+				EAA077071470C70C00B03C87 /* OAuthTwitter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

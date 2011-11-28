@@ -13,7 +13,7 @@
 
 @class OAuthTwitter, CustomLoginPopup;
 
-@interface RootViewController : UIViewController <TwitterLoginPopupDelegate, TwitterLoginUiFeedback, UIActionSheetDelegate> {
+@interface TwitterController : UIViewController <TwitterLoginPopupDelegate, TwitterLoginUiFeedback, UIActionSheetDelegate> {
     IBOutlet UIButton *postButton, *latestTweetsButton, *uploadMediaButton;
     IBOutlet UITextField *statusText;
     IBOutlet UILabel *signedInAs;
@@ -22,9 +22,12 @@
         
     CustomLoginPopup *loginPopup;
 	
-	OAuthTwitter *oAuth;
+	OAuthTwitter *oAuthTwitter;
 	
 }
+
+@property (retain, nonatomic) OAuthTwitter *oAuthTwitter;
+
 - (IBAction)didPressPost:(id)sender;
 - (IBAction)didPressLatestTweets:(id)sender;
 - (IBAction)didPressUploadMedia:(id)sender;

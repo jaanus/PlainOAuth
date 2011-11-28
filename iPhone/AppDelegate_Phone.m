@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate_Phone.h"
-#import "RootViewController.h"
+#import "Master.h"
 
 @implementation AppDelegate_Phone
 
@@ -20,8 +20,9 @@
 	
     [window makeKeyAndVisible];
 	
-	root = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
+	root = [[Master alloc] initWithNibName:@"Master" bundle:nil];
 	nav = [[UINavigationController alloc] initWithRootViewController:root];
+    nav.delegate = root;
 	[window addSubview:nav.view];
 	
 	return YES;

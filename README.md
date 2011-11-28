@@ -15,6 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### November 27, 2011
+
+* Created a top-level UI that supports more than just Twitter. Implemented Twitter OAuth as a child of the parent UI.
+
 ### November 13, 2011
 
 A number of changes supporting the longer-term goals of adding other example OAuth providers besides Twitter, and moving the project to ARC model.

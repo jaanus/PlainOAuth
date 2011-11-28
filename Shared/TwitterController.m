@@ -6,7 +6,7 @@
 //  Copyright 2010. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "TwitterController.h"
 #import "OAuthTwitter.h"
 #import "OAuthConsumerCredentials.h"
 #import "CustomLoginPopup.h"
@@ -14,7 +14,7 @@
 #import "JSON.h"
 #import "NSString+URLEncoding.h"
 
-@interface RootViewController (PrivateMethods)
+@interface TwitterController (PrivateMethods)
 
 - (void)resetUi;
 - (void)presentLoginWithFlowType:(TwitterLoginFlowType)flowType;
@@ -22,8 +22,9 @@
 @end
 
 
-@implementation RootViewController
+@implementation TwitterController
 
+@synthesize oAuthTwitter;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and
@@ -41,10 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	self.title = @"Hello OAuth-Twitter";
-
-	oAuth = [[OAuthTwitter alloc] initWithConsumerKey:OAUTH_CONSUMER_KEY andConsumerSecret:OAUTH_CONSUMER_SECRET];
-	[oAuth load];
+	self.title = @"PlainOAuth-Twitter";
 	    
     [self resetUi];
     [tweets setFont:[UIFont systemFontOfSize:12]];
@@ -52,13 +50,13 @@
 }
 
 - (void)resetUi {
-    if (oAuth.oauth_token_authorized) {
+    if (oAuthTwitter.oauth_token_authorized) {
         tweets.hidden = NO;
         uploadMediaButton.hidden = NO;
         tweets.text = @"";
         latestTweetsButton.hidden = NO;
-        signedInAs.text = [NSString stringWithFormat:@"Logged in as %@.", oAuth.screen_name];
-        NSLog(@"Resetting UI to authorized state. Twitter user: %@", oAuth.screen_name);
+        signedInAs.text = [NSString stringWithFormat:@"Logged in as %@.", oAuthTwitter.screen_name];
+        NSLog(@"Resetting UI to authorized state. Twitter user: %@", oAuthTwitter.screen_name);
         postButton.enabled = YES;
         statusText.enabled = YES;
         includeLocation.enabled = YES;
@@ -120,7 +118,7 @@
 
 - (void)dealloc {
     
-    [oAuth release];
+    [oAuthTwitter release];
     
     [super dealloc];
 }
@@ -130,7 +128,7 @@
 
 - (void)login {
     
-    UIActionSheet *pickFlow = [[UIActionSheet alloc] initWithTitle:@"Select login flow" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"PIN", @"URL callback", nil];
+    UIActionSheet *pickFlow = [[UIActionSheet alloc] initWithTitle:@"Select Twitter login flow" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"PIN", @"URL callback", nil];
     [pickFlow showInView:self.view];
     [pickFlow release];
     
@@ -139,8 +137,8 @@
 }
 
 - (void)logout {
-    [oAuth forget];
-    [oAuth save];
+    [oAuthTwitter forget];
+    [oAuthTwitter save];
     [self resetUi];
 }
 
@@ -168,7 +166,7 @@
 
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[postBodyString dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setValue:[oAuth oAuthHeaderForMethod:@"POST"
+    [request setValue:[oAuthTwitter oAuthHeaderForMethod:@"POST"
                                            andUrl:postUrl
                                         andParams:postInfo] forHTTPHeaderField:@"Authorization"];
     
@@ -195,7 +193,7 @@
     // Note how the URL is without parameters here...
     // (this is how OAuth works, you always give it a "normalized" URL without parameters
     // since you give parameters separately to it, even for GET)
-    NSString *oAuthValue = [oAuth oAuthHeaderForMethod:@"GET" andUrl:getUrl andParams:params];
+    NSString *oAuthValue = [oAuthTwitter oAuthHeaderForMethod:@"GET" andUrl:getUrl andParams:params];
     
     // ... but the actual request URL contains normal GET parameters.
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString
@@ -225,7 +223,7 @@
 
 - (IBAction)didPressUploadMedia:(id)sender {
     UploadMedia *uploadMedia = [[UploadMedia alloc] initWithNibName:@"UploadMedia" bundle:nil];
-    uploadMedia.oAuth = oAuth;
+    uploadMedia.oAuth = oAuthTwitter;
     [self.navigationController pushViewController:uploadMedia animated:YES];
     [uploadMedia release];
 }
@@ -242,7 +240,7 @@
 - (void)twitterLoginPopupDidAuthorize:(TwitterLoginPopup *)popup {
     [self dismissModalViewControllerAnimated:YES];        
     [loginPopup release]; loginPopup = nil; // was retained as ivar in "login"
-    [oAuth save];
+    [oAuthTwitter save];
     [self resetUi];
 }
 
@@ -306,7 +304,7 @@
         }
         
         loginPopup.flowType = flowType;
-        loginPopup.oAuth = oAuth;
+        loginPopup.oAuth = oAuthTwitter;
         loginPopup.delegate = self;
         loginPopup.uiDelegate = self;
     }

@@ -51,6 +51,8 @@
 		EA85B121140ADCDA00F687B1 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06511D472A8006E5BEE /* hmac.c */; };
 		EA85B122140ADCDA00F687B1 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06711D472A8006E5BEE /* sha1.c */; };
 		EA85B123140ADCDA00F687B1 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06A11D472A8006E5BEE /* NSString+URLEncoding.m */; };
+		EA8C57B01483552900E96D9F /* Master.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8C57AE1483552900E96D9F /* Master.m */; };
+		EA8C57B11483552900E96D9F /* Master.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8C57AF1483552900E96D9F /* Master.xib */; };
 		EA94F339140AD7DC00EFAF02 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA94F338140AD7DC00EFAF02 /* SenTestingKit.framework */; };
 		EA94F33A140AD7DC00EFAF02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		EA94F33B140AD7DC00EFAF02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -64,8 +66,8 @@
 		EACE237C11E047A20083EB38 /* UploadMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE237A11E047A20083EB38 /* UploadMedia.m */; };
 		EACE237D11E047A20083EB38 /* UploadMedia.xib in Resources */ = {isa = PBXBuildFile; fileRef = EACE237B11E047A20083EB38 /* UploadMedia.xib */; };
 		EACE238411E048620083EB38 /* CustomLoginPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE238011E048620083EB38 /* CustomLoginPopup.m */; };
-		EACE238511E048620083EB38 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE238211E048620083EB38 /* RootViewController.m */; };
-		EACE238611E048620083EB38 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EACE238311E048620083EB38 /* RootViewController.xib */; };
+		EACE238511E048620083EB38 /* TwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = EACE238211E048620083EB38 /* TwitterController.m */; };
+		EACE238611E048620083EB38 /* TwitterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EACE238311E048620083EB38 /* TwitterController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +130,9 @@
 		EA39B92412657DA700EA99DF /* signinBullet1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinBullet1@2x.png"; sourceTree = "<group>"; };
 		EA39B92612657DAC00EA99DF /* signinBullet2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinBullet2@2x.png"; sourceTree = "<group>"; };
 		EA39B92912657E1A00EA99DF /* signinButtonBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinButtonBg@2x.png"; sourceTree = "<group>"; };
+		EA8C57AD1483552900E96D9F /* Master.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Master.h; path = Shared/Master.h; sourceTree = "<group>"; };
+		EA8C57AE1483552900E96D9F /* Master.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Master.m; path = Shared/Master.m; sourceTree = "<group>"; };
+		EA8C57AF1483552900E96D9F /* Master.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Master.xib; path = Shared/Master.xib; sourceTree = "<group>"; };
 		EA94F337140AD7DC00EFAF02 /* PlainOAuthUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlainOAuthUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA94F338140AD7DC00EFAF02 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		EA94F33F140AD7DC00EFAF02 /* PlainOAuthUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlainOAuthUnitTests-Info.plist"; sourceTree = "<group>"; };
@@ -143,9 +148,9 @@
 		EACE237B11E047A20083EB38 /* UploadMedia.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = UploadMedia.xib; path = Shared/UploadMedia.xib; sourceTree = "<group>"; };
 		EACE237F11E048620083EB38 /* CustomLoginPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomLoginPopup.h; path = Shared/CustomLoginPopup.h; sourceTree = "<group>"; };
 		EACE238011E048620083EB38 /* CustomLoginPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomLoginPopup.m; path = Shared/CustomLoginPopup.m; sourceTree = "<group>"; };
-		EACE238111E048620083EB38 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Shared/RootViewController.h; sourceTree = "<group>"; };
-		EACE238211E048620083EB38 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Shared/RootViewController.m; sourceTree = "<group>"; };
-		EACE238311E048620083EB38 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RootViewController.xib; path = Shared/RootViewController.xib; sourceTree = "<group>"; };
+		EACE238111E048620083EB38 /* TwitterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterController.h; path = Shared/TwitterController.h; sourceTree = "<group>"; };
+		EACE238211E048620083EB38 /* TwitterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterController.m; path = Shared/TwitterController.m; sourceTree = "<group>"; };
+		EACE238311E048620083EB38 /* TwitterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TwitterController.xib; path = Shared/TwitterController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,9 +331,12 @@
 			children = (
 				EACE237F11E048620083EB38 /* CustomLoginPopup.h */,
 				EACE238011E048620083EB38 /* CustomLoginPopup.m */,
-				EACE238111E048620083EB38 /* RootViewController.h */,
-				EACE238211E048620083EB38 /* RootViewController.m */,
-				EACE238311E048620083EB38 /* RootViewController.xib */,
+				EACE238111E048620083EB38 /* TwitterController.h */,
+				EACE238211E048620083EB38 /* TwitterController.m */,
+				EACE238311E048620083EB38 /* TwitterController.xib */,
+				EA8C57AD1483552900E96D9F /* Master.h */,
+				EA8C57AE1483552900E96D9F /* Master.m */,
+				EA8C57AF1483552900E96D9F /* Master.xib */,
 				EACE237911E047A20083EB38 /* UploadMedia.h */,
 				EACE237A11E047A20083EB38 /* UploadMedia.m */,
 				EACE237B11E047A20083EB38 /* UploadMedia.xib */,
@@ -466,12 +474,13 @@
 				EA0EB08D11D472A8006E5BEE /* signinBullet1.png in Resources */,
 				EA0EB08F11D472A8006E5BEE /* TwitterLoginPopup.xib in Resources */,
 				EACE237D11E047A20083EB38 /* UploadMedia.xib in Resources */,
-				EACE238611E048620083EB38 /* RootViewController.xib in Resources */,
+				EACE238611E048620083EB38 /* TwitterController.xib in Resources */,
 				EA39B92112657CE100EA99DF /* signinHello@2x.png in Resources */,
 				EA39B92512657DA700EA99DF /* signinBullet1@2x.png in Resources */,
 				EA39B92712657DAC00EA99DF /* signinBullet2@2x.png in Resources */,
 				EA39B92A12657E1A00EA99DF /* signinButtonBg@2x.png in Resources */,
 				EA25CABB12F61BF800C42D50 /* TwitterLoginCallbackFlow.xib in Resources */,
+				EA8C57B11483552900E96D9F /* Master.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,8 +534,9 @@
 				EA0EB0AB11D472A8006E5BEE /* main.m in Sources */,
 				EACE237C11E047A20083EB38 /* UploadMedia.m in Sources */,
 				EACE238411E048620083EB38 /* CustomLoginPopup.m in Sources */,
-				EACE238511E048620083EB38 /* RootViewController.m in Sources */,
+				EACE238511E048620083EB38 /* TwitterController.m in Sources */,
 				EAA077071470C70C00B03C87 /* OAuthTwitter.m in Sources */,
+				EA8C57B01483552900E96D9F /* Master.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

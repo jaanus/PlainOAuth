@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@class OAuthTwitter, TwitterController;
+@class OAuthTwitter, OAuth4sq, TwitterController, FoursquareController;
 
 @interface Master : UIViewController <UINavigationControllerDelegate> {
     OAuthTwitter *oAuthTwitter;
+    OAuth4sq *oAuth4sq;
     TwitterController *twitterController;
+    FoursquareController *foursquareController;
 }
 
 - (IBAction)didTapTwitter:(id)sender;
+- (IBAction)didTapFoursquare:(id)sender;
+
 @property (retain, nonatomic) IBOutlet UILabel *twitterAuthStatus;
+@property (retain, nonatomic) IBOutlet UILabel *foursquareAuthStatus;
 
 - (void) resetUi;
 - (void) handleOAuthVerifier:(NSString *)oauth_verifier;

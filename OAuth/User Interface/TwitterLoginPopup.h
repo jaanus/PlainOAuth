@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OAuthTwitterCallbacks.h"
-#import "TwitterLoginPopupDelegate.h"
+#import "OAuthLoginPopupDelegate.h"
 #import "TwitterLoginUiFeedback.h"
 
 @class OAuth, TwitterWebViewController;
@@ -26,7 +26,7 @@ typedef enum {
     IBOutlet UILabel *typePinBelow;
     IBOutlet UIImageView *signInBullet2;
     
-	id <TwitterLoginPopupDelegate> delegate;
+	id <oAuthLoginPopupDelegate> delegate;
 	id <TwitterLoginUiFeedback> uiDelegate;
 	
     TwitterLoginFlowType flowType;
@@ -43,7 +43,7 @@ typedef enum {
     NSString *oAuthCallbackUrl;
 }
 
-@property (assign) id<TwitterLoginPopupDelegate> delegate;
+@property (assign) id<oAuthLoginPopupDelegate> delegate;
 @property (assign) id<TwitterLoginUiFeedback> uiDelegate;
 
 @property (assign) TwitterLoginFlowType flowType;

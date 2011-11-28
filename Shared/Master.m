@@ -10,9 +10,12 @@
 #import "OAuthTwitter.h"
 #import "OAuthConsumerCredentials.h"
 #import "TwitterController.h"
+#import "FoursquareController.h"
+#import "OAuth4sq.h"
 
 @implementation Master
 @synthesize twitterAuthStatus;
+@synthesize foursquareAuthStatus;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,8 +26,15 @@
         oAuthTwitter = [[OAuthTwitter alloc] initWithConsumerKey:OAUTH_TWITTER_CONSUMER_KEY andConsumerSecret:OAUTH_TWITTER_CONSUMER_SECRET];
         [oAuthTwitter load];
         
+        oAuth4sq = [[OAuth4sq alloc] initWithConsumerKey:OAUTH_FOURSQUARE_CONSUMER_KEY andConsumerSecret:OAUTH_FOURSQUARE_CONSUMER_SECRET];
+        oAuth4sq.save_prefix = @"PlainOAuth4sq";
+        [oAuth4sq load];
+        
         twitterController = [[TwitterController alloc] initWithNibName:@"TwitterController" bundle:nil];
         twitterController.oAuthTwitter = oAuthTwitter;
+        
+        foursquareController = [[FoursquareController alloc] initWithNibName:@"FoursquareController" bundle:nil];
+        foursquareController.oAuth4sq = oAuth4sq;
         
     }
     return self;
@@ -51,6 +61,7 @@
 - (void)viewDidUnload
 {
     [self setTwitterAuthStatus:nil];
+    [self setFoursquareAuthStatus:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -67,10 +78,18 @@
 
     
 }
+
+- (IBAction)didTapFoursquare:(id)sender {
+    [self.navigationController pushViewController:foursquareController animated:YES];
+}
+
 - (void)dealloc {
     [oAuthTwitter release];
+    [oAuth4sq release];
     [twitterAuthStatus release];
     [twitterController release];
+    [foursquareController release];
+    [foursquareAuthStatus release];
     [super dealloc];
 }
 

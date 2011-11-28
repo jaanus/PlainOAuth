@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	self.title = @"PlainOAuth-Twitter";
+	self.title = @"Twitter";
 	    
     [self resetUi];
     [tweets setFont:[UIFont systemFontOfSize:12]];
@@ -230,14 +230,14 @@
 
 
 #pragma mark -
-#pragma mark TwitterLoginPopupDelegate
+#pragma mark oAuthLoginPopupDelegate
 
-- (void)twitterLoginPopupDidCancel:(TwitterLoginPopup *)popup {
+- (void)oAuthLoginPopupDidCancel:(UIViewController *)popup {
     [self dismissModalViewControllerAnimated:YES];        
     [loginPopup release]; loginPopup = nil; // was retained as ivar in "login"
 }
 
-- (void)twitterLoginPopupDidAuthorize:(TwitterLoginPopup *)popup {
+- (void)oAuthLoginPopupDidAuthorize:(UIViewController *)popup {
     [self dismissModalViewControllerAnimated:YES];        
     [loginPopup release]; loginPopup = nil; // was retained as ivar in "login"
     [oAuthTwitter save];

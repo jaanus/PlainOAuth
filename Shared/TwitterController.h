@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TwitterLoginPopupDelegate.h"
+#import "OAuthLoginPopupDelegate.h"
 #import "TwitterLoginUiFeedback.h"
 #import "UploadMedia.h"
 
 @class OAuthTwitter, CustomLoginPopup;
 
-@interface TwitterController : UIViewController <TwitterLoginPopupDelegate, TwitterLoginUiFeedback, UIActionSheetDelegate> {
+@interface TwitterController : UIViewController <oAuthLoginPopupDelegate, TwitterLoginUiFeedback, UIActionSheetDelegate> {
     IBOutlet UIButton *postButton, *latestTweetsButton, *uploadMediaButton;
     IBOutlet UITextField *statusText;
     IBOutlet UILabel *signedInAs;

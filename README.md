@@ -18,6 +18,7 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 ### November 27, 2011
 
 * Created a top-level UI that supports more than just Twitter. Implemented Twitter OAuth as a child of the parent UI.
+* Incomplete Foursquare implementation. Loads the login UI but does not process the results yet.
 
 ### November 13, 2011
 

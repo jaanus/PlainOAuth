@@ -58,7 +58,7 @@
 - (void)cancel {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self]; // fix?
-	[self.delegate twitterLoginPopupDidCancel:self];
+	[self.delegate oAuthLoginPopupDidCancel:self];
 }
 
 #pragma mark -
@@ -168,7 +168,7 @@
 	}
 
 	[self.uiDelegate authorizationRequestDidSucceed:self];
-    [self.delegate twitterLoginPopupDidAuthorize:self];
+    [self.delegate oAuthLoginPopupDidAuthorize:self];
 }
 
 - (void) authorizeTwitterTokenDidFail:(OAuth *)_oAuth {
@@ -224,7 +224,7 @@
         typePinBelow.alpha = 0.5;
         signInBullet2.alpha = 0.5;        
         // XIB is done with portrait layout. If we were launched in landscape, this fixes the button positioning.
-        [self fixSignInButtonPositionWithOrientation:self.interfaceOrientation andAnimationDuration:0];
+        [self fixSignInButtonPositionWithOrientation:(UIDeviceOrientation)self.interfaceOrientation andAnimationDuration:0];
     }    	
     
     if (flowType == TwitterLoginCallbackFlow) {
@@ -253,7 +253,7 @@
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [self fixSignInButtonPositionWithOrientation:toInterfaceOrientation andAnimationDuration:duration];
+    [self fixSignInButtonPositionWithOrientation:(UIDeviceOrientation)toInterfaceOrientation andAnimationDuration:duration];
 }
 
 // Re-layout interface after rotation
@@ -337,7 +337,7 @@
       willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if ((viewController == self) && (flowType == TwitterLoginPinFlow)) {
 		if (willBeEditingPin) {
-            [self fixSignInButtonPositionWithOrientation:self.interfaceOrientation andAnimationDuration:0];
+            [self fixSignInButtonPositionWithOrientation:(UIDeviceOrientation)self.interfaceOrientation andAnimationDuration:0];
         }
     }
 }

@@ -8,6 +8,7 @@
 
 #import "FoursquareLoginPopup.h"
 #import "OAuthConsumerCredentials.h"
+#import "OAuth.h"
 
 @implementation FoursquareLoginPopup
 
@@ -63,9 +64,10 @@
     CGRect appFrame = [UIScreen mainScreen].applicationFrame;    
     webView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,appFrame.size.width,appFrame.size.height)] autorelease];
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    webView.delegate = self;
     [self.view addSubview:webView];
     
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://foursquare.com/oauth2/authenticate?client_id=%@&response_type=code&redirect_uri=%@", OAUTH_FOURSQUARE_CONSUMER_KEY, @"oob"]]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://foursquare.com/oauth2/authenticate?client_id=%@&response_type=token&redirect_uri=%@", OAUTH_FOURSQUARE_CONSUMER_KEY, @"plainoauth://handleFoursquareLogin"]]]];
     
 }
 
@@ -88,6 +90,43 @@
 
 - (void)cancel {    
 	[self.delegate oAuthLoginPopupDidCancel:self];
+}
+
+#pragma mark -
+#pragma mark UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webview shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSLog(@"webview should load request: %@", request);
+    
+    NSString *URLString = [[request URL] absoluteString];
+        
+    if ([URLString rangeOfString:@"access_token="].location != NSNotFound) {
+        
+        
+        NSString *accessToken = [[URLString componentsSeparatedByString:@"="] lastObject];
+
+        NSLog(@"yowza, got token: %@ from url %@", accessToken, URLString);
+
+        oAuth.oauth_token = accessToken;
+        oAuth.oauth_token_authorized = YES;
+        [oAuth save];
+        [self.delegate oAuthLoginPopupDidAuthorize:self];
+    }
+    
+    
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    NSLog(@"did start load");
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webview {
+    NSLog(@"did finish load url: %@", webview.request.URL);
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    NSLog(@"did fail with error: %@", error);
 }
 
 @end

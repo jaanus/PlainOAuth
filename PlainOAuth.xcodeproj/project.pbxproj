@@ -53,7 +53,6 @@
 		EA85B123140ADCDA00F687B1 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB06A11D472A8006E5BEE /* NSString+URLEncoding.m */; };
 		EA8C57B01483552900E96D9F /* Master.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8C57AE1483552900E96D9F /* Master.m */; };
 		EA8C57B11483552900E96D9F /* Master.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8C57AF1483552900E96D9F /* Master.xib */; };
-		EA8C57B9148360C000E96D9F /* OAuth4sq.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8C57B8148360C000E96D9F /* OAuth4sq.m */; };
 		EA8C57BC148368F100E96D9F /* FoursquareLoginPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8C57BB148368F100E96D9F /* FoursquareLoginPopup.m */; };
 		EA94F339140AD7DC00EFAF02 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA94F338140AD7DC00EFAF02 /* SenTestingKit.framework */; };
 		EA94F33A140AD7DC00EFAF02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -96,7 +95,7 @@
 		EA0EB04011D472A8006E5BEE /* TwitterLoginPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwitterLoginPopup.xib; sourceTree = "<group>"; };
 		EA0EB04111D472A8006E5BEE /* TwitterWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterWebViewController.h; sourceTree = "<group>"; };
 		EA0EB04211D472A8006E5BEE /* TwitterWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterWebViewController.m; sourceTree = "<group>"; };
-		EA0EB04411D472A8006E5BEE /* OAuthLoginPopupDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; path = OAuthLoginPopupDelegate.h; sourceTree = "<group>"; };
+		EA0EB04411D472A8006E5BEE /* OAuthLoginPopupDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthLoginPopupDelegate.h; sourceTree = "<group>"; };
 		EA0EB04611D472A8006E5BEE /* OAuthTwitterCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthTwitterCallbacks.h; sourceTree = "<group>"; };
 		EA0EB06011D472A8006E5BEE /* OAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
 		EA0EB06111D472A8006E5BEE /* OAHMAC_SHA1SignatureProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAHMAC_SHA1SignatureProvider.m; sourceTree = "<group>"; };
@@ -136,8 +135,6 @@
 		EA8C57AD1483552900E96D9F /* Master.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Master.h; path = Shared/Master.h; sourceTree = "<group>"; };
 		EA8C57AE1483552900E96D9F /* Master.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Master.m; path = Shared/Master.m; sourceTree = "<group>"; };
 		EA8C57AF1483552900E96D9F /* Master.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Master.xib; path = Shared/Master.xib; sourceTree = "<group>"; };
-		EA8C57B7148360C000E96D9F /* OAuth4sq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuth4sq.h; sourceTree = "<group>"; };
-		EA8C57B8148360C000E96D9F /* OAuth4sq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth4sq.m; sourceTree = "<group>"; };
 		EA8C57BA148368F100E96D9F /* FoursquareLoginPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareLoginPopup.h; sourceTree = "<group>"; };
 		EA8C57BB148368F100E96D9F /* FoursquareLoginPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareLoginPopup.m; sourceTree = "<group>"; };
 		EA94F337140AD7DC00EFAF02 /* PlainOAuthUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlainOAuthUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,7 +150,7 @@
 		EACBA7E814836BE500512B5A /* FoursquareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoursquareController.h; path = Shared/FoursquareController.h; sourceTree = "<group>"; };
 		EACBA7E914836BE500512B5A /* FoursquareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoursquareController.m; path = Shared/FoursquareController.m; sourceTree = "<group>"; };
 		EACBA7EA14836BE500512B5A /* FoursquareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FoursquareController.xib; path = Shared/FoursquareController.xib; sourceTree = "<group>"; };
-		EACBA7EE14836C7600512B5A /* TwitterLoginUiFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TwitterLoginUiFeedback.h; sourceTree = "<group>"; };
+		EACBA7EE14836C7600512B5A /* TwitterLoginUiFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterLoginUiFeedback.h; sourceTree = "<group>"; };
 		EACE237911E047A20083EB38 /* UploadMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadMedia.h; path = Shared/UploadMedia.h; sourceTree = "<group>"; };
 		EACE237A11E047A20083EB38 /* UploadMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadMedia.m; path = Shared/UploadMedia.m; sourceTree = "<group>"; };
 		EACE237B11E047A20083EB38 /* UploadMedia.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = UploadMedia.xib; path = Shared/UploadMedia.xib; sourceTree = "<group>"; };
@@ -317,8 +314,6 @@
 				EA0EB06A11D472A8006E5BEE /* NSString+URLEncoding.m */,
 				EA0EB06B11D472A8006E5BEE /* OAuth.h */,
 				EA0EB06C11D472A8006E5BEE /* OAuth.m */,
-				EA8C57B7148360C000E96D9F /* OAuth4sq.h */,
-				EA8C57B8148360C000E96D9F /* OAuth4sq.m */,
 				EAA077051470C70C00B03C87 /* OAuthTwitter.h */,
 				EAA077061470C70C00B03C87 /* OAuthTwitter.m */,
 			);
@@ -556,7 +551,6 @@
 				EACE238511E048620083EB38 /* TwitterController.m in Sources */,
 				EAA077071470C70C00B03C87 /* OAuthTwitter.m in Sources */,
 				EA8C57B01483552900E96D9F /* Master.m in Sources */,
-				EA8C57B9148360C000E96D9F /* OAuth4sq.m in Sources */,
 				EA8C57BC148368F100E96D9F /* FoursquareLoginPopup.m in Sources */,
 				EACBA7EB14836BE500512B5A /* FoursquareController.m in Sources */,
 			);

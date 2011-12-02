@@ -7,7 +7,7 @@
 //
 
 #import "FoursquareController.h"
-#import "OAuth4sq.h"
+#import "OAuth.h"
 #import "FoursquareLoginPopup.h"
 
 @interface FoursquareController (PrivateMethods)
@@ -101,10 +101,15 @@
     
     // UIWebView *fourSquareLoginWebview = [[UIWebView alloc] init
 
-    if (!loginPopup) {
-        loginPopup = [[FoursquareLoginPopup alloc] init];
-        loginPopup.delegate = self;
+    if (loginPopup) {
+        [loginPopup release];
+        loginPopup = nil;
     }
+    
+    loginPopup = [[FoursquareLoginPopup alloc] init];
+    loginPopup.oAuth = oAuth4sq;
+    loginPopup.delegate = self;
+
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginPopup];
     [self presentModalViewController:nav animated:YES];
     [nav release];
@@ -130,7 +135,7 @@
 - (void)oAuthLoginPopupDidAuthorize:(UIViewController *)popup {
     [self dismissModalViewControllerAnimated:YES];        
     [loginPopup release]; loginPopup = nil;
-    
+    NSLog(@"oh hai, got the token: %@", oAuth4sq.oauth_token);
 }
 
 @end

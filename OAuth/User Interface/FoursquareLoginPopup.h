@@ -11,7 +11,7 @@
 
 @class OAuth;
 
-@interface FoursquareLoginPopup : UIViewController {
+@interface FoursquareLoginPopup : UIViewController <UIWebViewDelegate> {
     UIWebView *webView;
 }
 

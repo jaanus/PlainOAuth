@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class OAuthTwitter, OAuth4sq, TwitterController, FoursquareController;
+@class OAuthTwitter, OAuth, TwitterController, FoursquareController;
 
 @interface Master : UIViewController <UINavigationControllerDelegate> {
     OAuthTwitter *oAuthTwitter;
-    OAuth4sq *oAuth4sq;
+    OAuth *oAuth4sq;
     TwitterController *twitterController;
     FoursquareController *foursquareController;
 }

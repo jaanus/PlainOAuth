@@ -11,7 +11,7 @@
 #import "OAuthConsumerCredentials.h"
 #import "TwitterController.h"
 #import "FoursquareController.h"
-#import "OAuth4sq.h"
+#import "OAuth.h"
 
 @implementation Master
 @synthesize twitterAuthStatus;
@@ -26,7 +26,7 @@
         oAuthTwitter = [[OAuthTwitter alloc] initWithConsumerKey:OAUTH_TWITTER_CONSUMER_KEY andConsumerSecret:OAUTH_TWITTER_CONSUMER_SECRET];
         [oAuthTwitter load];
         
-        oAuth4sq = [[OAuth4sq alloc] initWithConsumerKey:OAUTH_FOURSQUARE_CONSUMER_KEY andConsumerSecret:OAUTH_FOURSQUARE_CONSUMER_SECRET];
+        oAuth4sq = [[OAuth alloc] initWithConsumerKey:OAUTH_FOURSQUARE_CONSUMER_KEY andConsumerSecret:OAUTH_FOURSQUARE_CONSUMER_SECRET];
         oAuth4sq.save_prefix = @"PlainOAuth4sq";
         [oAuth4sq load];
         

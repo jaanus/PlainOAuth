@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "OAuthLoginPopupDelegate.h"
 
-@class OAuth4sq, FoursquareLoginPopup;
+@class OAuth, FoursquareLoginPopup;
 
 @interface FoursquareController : UIViewController <oAuthLoginPopupDelegate> {
     FoursquareLoginPopup *loginPopup;
 }
 
-@property (retain, nonatomic) OAuth4sq *oAuth4sq;
+@property (retain, nonatomic) OAuth *oAuth4sq;
 
 @end

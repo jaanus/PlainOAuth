@@ -99,7 +99,7 @@
 
 - (void) resetUi {
     if (oAuthTwitter.oauth_token_authorized) {
-        twitterAuthStatus.text = [NSString stringWithFormat:@"Signed in as %@", oAuthTwitter.screen_name];
+        twitterAuthStatus.text = [NSString stringWithFormat:@"Signed in as %@.", oAuthTwitter.screen_name];
     } else {
         twitterAuthStatus.text = @"Not signed in.";
     }

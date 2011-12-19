@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2009 Stig Brautaset. All rights reserved.
+ Copyright (C) 2011 Stig Brautaset. All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -27,27 +27,10 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
+#import "SBJsonStreamWriter.h"
 
+@interface SBJsonStreamWriterAccumulator : NSObject <SBJsonStreamWriterDelegate>
 
-/**
- @brief Adds JSON generation to Foundation classes
- 
- This is a category on NSObject that adds methods for returning JSON representations
- of standard objects to the objects themselves. This means you can call the
- -JSONRepresentation method on an NSArray object and it'll do what you want.
- */
-@interface NSObject (NSObject_SBJSON)
-
-/**
- @brief Returns a string containing the receiver encoded in JSON.
-
- This method is added as a category on NSObject but is only actually
- supported for the following objects:
- @li NSDictionary
- @li NSArray
- */
-- (NSString *)JSONRepresentation;
+@property (readonly, copy) NSMutableData* data;
 
 @end
-

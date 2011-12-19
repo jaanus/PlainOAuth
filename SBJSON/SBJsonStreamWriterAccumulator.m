@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2009 Stig Brautaset. All rights reserved.
+ Copyright (C) 2011 Stig Brautaset. All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -27,25 +27,26 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/**
- @mainpage A strict JSON parser and generator for Objective-C
+#import "SBJsonStreamWriterAccumulator.h"
 
- JSON (JavaScript Object Notation) is a lightweight data-interchange
- format. This framework provides two apis for parsing and generating
- JSON. One standard object-based and a higher level api consisting of
- categories added to existing Objective-C classes.
 
- Learn more on the http://code.google.com/p/json-framework project site.
- 
- This framework does its best to be as strict as possible, both in what it
- accepts and what it generates. For example, it does not support trailing commas
- in arrays or objects. Nor does it support embedded comments, or
- anything else not in the JSON specification. This is considered a feature. 
- 
-*/
+@implementation SBJsonStreamWriterAccumulator
 
-#import "SBJsonParser.h"
-#import "SBJsonWriter.h"
-#import "NSObject+SBJSON.h"
-#import "NSString+SBJSON.h"
+@synthesize data;
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        data = [[NSMutableData alloc] initWithCapacity:8096u];
+    }
+    return self;
+}
+
+
+#pragma mark SBJsonStreamWriterDelegate
+
+- (void)writer:(SBJsonStreamWriter *)writer appendBytes:(const void *)bytes length:(NSUInteger)length {
+    [data appendBytes:bytes length:length];
+}
+
+@end

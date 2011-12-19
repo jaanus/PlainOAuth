@@ -27,52 +27,41 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "SBJsonBase.h"
-NSString * SBJSONErrorDomain = @"org.brautaset.JSON.ErrorDomain";
+#import <Foundation/Foundation.h>
 
+#pragma mark JSON Writing
 
-@implementation SBJsonBase
+/// Adds JSON generation to NSObject
+@interface NSObject (NSObject_SBJsonWriting)
 
-@synthesize errorTrace;
-@synthesize maxDepth;
-
-- (id)init {
-    self = [super init];
-    if (self)
-        self.maxDepth = 512;
-    return self;
-}
-
-- (void)dealloc {
-    [errorTrace release];
-    [super dealloc];
-}
-
-- (void)addErrorWithCode:(NSUInteger)code description:(NSString*)str {
-    NSDictionary *userInfo;
-    if (!errorTrace) {
-        errorTrace = [NSMutableArray new];
-        userInfo = [NSDictionary dictionaryWithObject:str forKey:NSLocalizedDescriptionKey];
-        
-    } else {
-        userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                    str, NSLocalizedDescriptionKey,
-                    [errorTrace lastObject], NSUnderlyingErrorKey,
-                    nil];
-    }
-    
-    NSError *error = [NSError errorWithDomain:SBJSONErrorDomain code:code userInfo:userInfo];
-
-    [self willChangeValueForKey:@"errorTrace"];
-    [errorTrace addObject:error];
-    [self didChangeValueForKey:@"errorTrace"];
-}
-
-- (void)clearErrorTrace {
-    [self willChangeValueForKey:@"errorTrace"];
-    [errorTrace release];
-    errorTrace = nil;
-    [self didChangeValueForKey:@"errorTrace"];
-}
+/**
+ @brief Encodes the receiver into a JSON string
+ 
+ Although defined as a category on NSObject it is only defined for NSArray and NSDictionary.
+ 
+ @return the receiver encoded in JSON, or nil on error.
+ 
+ @see @ref objc2json
+ */
+- (NSString *)JSONRepresentation;
 
 @end
+
+
+#pragma mark JSON Parsing
+
+/// Adds JSON parsing methods to NSString
+@interface NSString (NSString_SBJsonParsing)
+
+/**
+ @brief Decodes the receiver's JSON text
+ 
+ @return the NSDictionary or NSArray represented by the receiver, or nil on error.
+ 
+ @see @ref json2objc
+ */
+- (id)JSONValue;
+
+@end
+
+

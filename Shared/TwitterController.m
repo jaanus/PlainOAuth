@@ -11,7 +11,7 @@
 #import "OAuthConsumerCredentials.h"
 #import "CustomLoginPopup.h"
 #import "TwitterLoginPopup.h"
-#import "JSON.h"
+#import "SBJson.h"
 #import "NSString+URLEncoding.h"
 
 @interface TwitterController (PrivateMethods)
@@ -56,7 +56,7 @@
         tweets.text = @"";
         latestTweetsButton.hidden = NO;
         signedInAs.text = [NSString stringWithFormat:@"Logged in as %@.", oAuthTwitter.screen_name];
-        NSLog(@"Resetting UI to authorized state. Twitter user: %@", oAuthTwitter.screen_name);
+        NSLog(@"Resetting Twitter UI to authorized state. Twitter user: %@", oAuthTwitter.screen_name);
         postButton.enabled = YES;
         statusText.enabled = YES;
         includeLocation.enabled = YES;
@@ -75,7 +75,7 @@
         uploadMediaButton.hidden = YES;
         tweets.text = @"";
         signedInAs.text = @"";
-        NSLog(@"Resetting UI to non-authorized state.");
+        NSLog(@"Resetting Twitter UI to non-authorized state.");
         
         postButton.enabled = NO;
         statusText.text = @"";

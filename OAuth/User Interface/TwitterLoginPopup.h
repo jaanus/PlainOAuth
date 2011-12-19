@@ -10,7 +10,7 @@
 #import "OAuthLoginPopupDelegate.h"
 #import "TwitterLoginUiFeedback.h"
 
-@class OAuth, TwitterWebViewController;
+@class OAuthTwitter, TwitterWebViewController;
 
 typedef enum {
     TwitterLoginPinFlow,
@@ -32,7 +32,7 @@ typedef enum {
     TwitterLoginFlowType flowType;
 	
 	NSOperationQueue *queue;
-	OAuth *oAuth;
+	OAuthTwitter *oAuth;
 	IBOutlet UIWebView *webView;
 	TwitterWebViewController *webViewController;
 	BOOL willBeEditingPin;
@@ -48,7 +48,7 @@ typedef enum {
 
 @property (assign) TwitterLoginFlowType flowType;
 
-@property (nonatomic, retain) OAuth *oAuth;
+@property (nonatomic, retain) OAuthTwitter *oAuth;
 @property (nonatomic, copy) NSString *oAuthCallbackUrl;
 
 // Call this when receiving the verifier as URL parameter in URL callback flow,

@@ -111,22 +111,11 @@
         oAuth.oauth_token_authorized = YES;
         [oAuth save];
         [self.delegate oAuthLoginPopupDidAuthorize:self];
+        return NO;
     }
     
     
     return YES;
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"did start load");
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webview {
-    NSLog(@"did finish load url: %@", webview.request.URL);
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"did fail with error: %@", error);
 }
 
 @end

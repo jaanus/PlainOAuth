@@ -15,6 +15,12 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### December 18, 2011
+
+* Upgraded SBJson version to 3.1, no more naming conflict with JSON.framework.
+* Completed Foursquare demo UI implementation.
+* Moved Twitter delegate from OAuth to OAuthTwitter subclass.
+
 ### November 27, 2011
 
 * Created a top-level UI that supports more than just Twitter. Implemented Twitter OAuth as a child of the parent UI.

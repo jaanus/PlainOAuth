@@ -11,6 +11,7 @@
 @implementation OAuthTwitter
 
 @synthesize screen_name, user_id;
+@synthesize delegate;
 
 #pragma mark -
 #pragma mark Init and dealloc
@@ -19,6 +20,7 @@
     if ((self = [super initWithConsumerKey:aConsumerKey andConsumerSecret:aConsumerSecret])) {
         self.user_id = @"";
 		self.screen_name = @"";
+        self.delegate = nil;
     }
     return self;
 }

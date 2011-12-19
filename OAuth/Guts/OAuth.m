@@ -26,7 +26,6 @@
 @synthesize oauth_token;
 @synthesize oauth_token_secret;
 @synthesize oauth_token_authorized;
-@synthesize delegate;
 @synthesize save_prefix;
 
 #pragma mark -
@@ -46,7 +45,6 @@
 		self.oauth_token_secret = @"";
 		srandom(time(NULL)); // seed the random number generator, used for generating nonces
 		self.oauth_token_authorized = NO;
-		self.delegate = nil;
 
         self.save_prefix = @"PlainOAuth";
 	}

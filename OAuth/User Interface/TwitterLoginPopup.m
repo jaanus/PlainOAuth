@@ -6,7 +6,7 @@
 //
 
 #import "TwitterLoginPopup.h"
-#import "OAuth.h"
+#import "OAuthTwitter.h"
 #import "TwitterWebViewController.h"
 
 @interface TwitterLoginPopup (PrivateMethods)

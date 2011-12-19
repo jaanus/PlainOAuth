@@ -9,6 +9,7 @@
 #import "FoursquareController.h"
 #import "OAuth.h"
 #import "FoursquareLoginPopup.h"
+#import "SBJson.h"
 
 @interface FoursquareController (PrivateMethods)
 
@@ -18,6 +19,8 @@
 
 @implementation FoursquareController
 
+@synthesize seeCheckinsButton;
+@synthesize checkinsField;
 @synthesize oAuth4sq;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,6 +54,8 @@
 
 - (void)viewDidUnload
 {
+    [self setSeeCheckinsButton:nil];
+    [self setCheckinsField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -60,6 +65,8 @@
     
     [oAuth4sq release];
     
+    [seeCheckinsButton release];
+    [checkinsField release];
     [super dealloc];
 }
 
@@ -78,6 +85,7 @@
                                                                   action:@selector(logout)];
         self.navigationItem.rightBarButtonItem = logout;
         [logout release];
+        seeCheckinsButton.enabled = YES;
 
     } else {
         UIBarButtonItem *login = [[UIBarButtonItem alloc] initWithTitle:@"Log in"
@@ -86,7 +94,11 @@
                                                                  action:@selector(login)];
         self.navigationItem.rightBarButtonItem = login;
         [login release];
+        
+        seeCheckinsButton.enabled = NO;
     }
+    
+    checkinsField.text = @"";
     
 }
 
@@ -123,6 +135,40 @@
     [self resetUi];
 }
 
+- (IBAction)didTapSeeCheckins:(id)sender {
+    
+    checkinsField.text = @"";
+    
+    NSString *url = [NSString stringWithFormat:@"https://api.foursquare.com/v2/users/self/checkins?v=20111218&limit=5&oauth_token=%@", oAuth4sq.oauth_token];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    NSHTTPURLResponse *response;
+    NSError *error = nil;
+    
+    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];
+    
+    NSDictionary *checkins = [responseString JSONValue];
+    
+    for (NSDictionary *item in [[[checkins objectForKey:@"response"] objectForKey:@"checkins"] objectForKey:@"items"]) {
+        
+        NSString *oneItem = [[item objectForKey:@"venue"] valueForKey:@"name"];
+        NSString *shout = [item valueForKey:@"shout"];
+        if (shout) {
+            oneItem = [NSString stringWithFormat:@"%@. “%@”", oneItem, shout];
+        }
+
+        NSLog(@"%@", oneItem);
+        
+        checkinsField.text = [NSString stringWithFormat:@"%@%@\n\n", checkinsField.text, oneItem];
+        
+    }
+    
+    // NSLog(@"got response: %@", responseString);
+    
+}
+
+
 #pragma mark -
 #pragma mark oAuthLoginPopupDelegate
 
@@ -136,6 +182,8 @@
     [self dismissModalViewControllerAnimated:YES];        
     [loginPopup release]; loginPopup = nil;
     NSLog(@"oh hai, got the token: %@", oAuth4sq.oauth_token);
+    [oAuth4sq save];
+    [self resetUi];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "OAuth.h"
+#import "OAuthTwitterCallbacks.h"
 
 @interface OAuthTwitter : OAuth {
 
@@ -16,10 +17,12 @@
     *user_id,
     *screen_name;
     
+    id<OAuthTwitterCallbacks> delegate;
 }
 
 @property (copy) NSString *user_id;
 @property (copy) NSString *screen_name;
+@property (assign) id<OAuthTwitterCallbacks> delegate;
 
 // Twitter convenience methods
 - (void) synchronousRequestTwitterToken;

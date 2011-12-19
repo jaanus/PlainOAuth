@@ -6,7 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OAuthTwitterCallbacks.h"
 
 @interface OAuth : NSObject {
 	NSString
@@ -21,13 +20,16 @@
 		*oauth_timestamp,
 		*oauth_nonce,
 	
-		// Fixed to "1.0"
+		// Fixed to "1.0". Although now that we support v2 too, should fix this.
 		*oauth_version,
 	
 		// We obtain these from the provider.
 		// These may be either request token (oauth 1.0a 6.1.2) or access token (oauth 1.0a 6.3.2);
 		// determine semantics with oauth_token_authorized and call synchronousVerifyCredentials
 		// if you want to be really sure.
+        //
+        // For OAuth 2.0, the token simply stores the token that the provider issued, and
+        // token_secret is undefined.
 		*oauth_token,
 		*oauth_token_secret,
     
@@ -41,7 +43,6 @@
 	// modify it during runtime.
 	BOOL oauth_token_authorized;	
 	
-	id<OAuthTwitterCallbacks> delegate;
 }
 
 // You initialize the object with your app (consumer) credentials.
@@ -65,7 +66,6 @@
 
 
 
-@property (assign) id<OAuthTwitterCallbacks> delegate;
 @property (assign) BOOL oauth_token_authorized;
 @property (copy) NSString *oauth_token;
 @property (copy) NSString *oauth_token_secret;

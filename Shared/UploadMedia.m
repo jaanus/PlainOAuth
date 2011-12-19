@@ -8,7 +8,7 @@
 
 #import "UploadMedia.h"
 #import "OAuth.h"
-#import "JSON.h"
+#import "SBJson.h"
 #import "OAuthConsumerCredentials.h"
 #import "NSString+URLEncoding.h"
 

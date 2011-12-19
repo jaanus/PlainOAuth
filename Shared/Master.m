@@ -103,6 +103,12 @@
     } else {
         twitterAuthStatus.text = @"Not signed in.";
     }
+    
+    if (oAuth4sq.oauth_token_authorized) {
+        foursquareAuthStatus.text = @"Signed in.";
+    } else {
+        foursquareAuthStatus.text = @"Not signed in.";
+    }
 }
 
 - (void)handleOAuthVerifier:(NSString *)oauth_verifier {

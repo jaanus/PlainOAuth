@@ -196,11 +196,19 @@ I use the work of several others:
 
 [OAuth Consumer](http://code.google.com/p/oauthconsumer/) by Jon Crosby. I have included some code from this project, specifically NSString URL-encoding, base64 and crypto. There is an "iPhone-ready" version of this library [here](http://github.com/jdg/oauthconsumer).
 
-[ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/) for HTTP. This is only for example app and Twitter convenience methods; the core OAuth implementation does not do HTTP.
+[ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/) for HTTP. This is only for example app and Twitter convenience methods; the core OAuth implementation does not do HTTP. (I used this library in the earlier versions of PlainOAuth. I am trying to cut down the dependencies other than Apple core libraries and am no longer using ASIHTTPRequest.)
 
 [Tweepy.](http://github.com/joshthecoder/tweepy) This is a nice Twitter API implementation in Python (including OAuth) that was helpful in understanding the protocol.
 
 [Stack Overflow](http://stackoverflow.com) has been invaluable to me in learning about miscellaneous iPhone development.
+
+## Donations
+
+If you found this project useful, please donate. There’s no expected amount and I don’t require you to. Completely up to you. You can do it with Pledgie or Flattr.
+
+<a href='http://www.pledgie.com/campaigns/8041'><img alt='Click here to lend your support to: PlainOAuth and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/8041.png?skin_name=chrome' border='0' /></a>
+
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jaanus&url=https://github.com/jaanus/PlainOAuth&title=PlainOAuth&language=&tags=github&category=software)
 
 ## License (MIT)
 

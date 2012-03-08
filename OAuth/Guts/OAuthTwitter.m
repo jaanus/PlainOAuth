@@ -199,6 +199,7 @@
     [super save];
     [[NSUserDefaults standardUserDefaults] setObject:self.user_id forKey:[NSString stringWithFormat:@"%@user_id", self.save_prefix]];
 	[[NSUserDefaults standardUserDefaults] setObject:self.screen_name forKey:[NSString stringWithFormat:@"%@screen_name", self.save_prefix]];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

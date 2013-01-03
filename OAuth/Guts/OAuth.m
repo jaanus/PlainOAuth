@@ -226,7 +226,7 @@
 	NSMutableArray *chunks = [[[NSMutableArray alloc] init] autorelease];
 	
 	// First add all the base components.
-	[chunks addObject:[NSString stringWithString:@"OAuth realm=\"\""]];
+	[chunks addObject:@"OAuth realm=\"\""];
 	for (NSString *part in [self oauth_base_components]) {
 		[chunks addObject:[NSString stringWithFormat:@"%@=\"%@\"", part, [[self valueForKey:part] encodedURLParameterString]]];
 	}

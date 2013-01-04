@@ -15,6 +15,10 @@ I have tested the example app in Xcode 3.2.3 on iPhone with iOS 4, and iPad with
 
 ## Change log
 
+### January 3, 2013
+
+* Fixed a warning about string literal use, making the main class compile without warnings again.
+
 ### December 18, 2011
 
 * Upgraded SBJson version to 3.1, no more naming conflict with JSON.framework.

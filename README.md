@@ -188,11 +188,11 @@ If you copy PlainOAuth code to your app, make sure you have the following framew
 
 Here are three posts on the background of this, that may help you understand this code better.
 
-[New version of PlainOAuth, the example Twitter OAuth app for iPhone](http://jaanus.com/post/1451098734/new-version-of-plainoauth-the)
+[New version of PlainOAuth, the example Twitter OAuth app for iPhone](https://jaanus.com/new-version-of-plainoauth-the-example-twitter-oauth-app-for-iphone/)
 
-[Understanding the guts of Twitter's OAuth for client apps](http://jaanus.com/post/1451098316/understanding-the-guts-of-twit)
+[Understanding the guts of Twitter's OAuth for client apps](https://jaanus.com/understanding-the-guts-of-twitters-oauth-for-client-apps/)
 
-[An example iPhone Twitter app with OAuth authentication](http://jaanus.com/post/1451098350/an-example-iphone-twitter-app)
+[An example iPhone Twitter app with OAuth authentication](https://jaanus.com/an-example-iphone-twitter-app-with-oauth-authentication/)
 
 ## Acknowledgements
 
@@ -205,14 +205,6 @@ I use the work of several others:
 [Tweepy.](http://github.com/joshthecoder/tweepy) This is a nice Twitter API implementation in Python (including OAuth) that was helpful in understanding the protocol.
 
 [Stack Overflow](http://stackoverflow.com) has been invaluable to me in learning about miscellaneous iPhone development.
-
-## Donations
-
-If you found this project useful, please donate. There’s no expected amount and I don’t require you to. Completely up to you. You can do it with Pledgie or Flattr.
-
-<a href='http://www.pledgie.com/campaigns/8041'><img alt='Click here to lend your support to: PlainOAuth and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/8041.png?skin_name=chrome' border='0' /></a>
-
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jaanus&url=https://github.com/jaanus/PlainOAuth&title=PlainOAuth&language=&tags=github&category=software)
 
 ## License (MIT)
 
